@@ -1,0 +1,528 @@
+---------------------------------------------------------------
+[ 2017-12-11T20:13:38+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/bootstrap.min.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/bootstrap.min.css.map [运行时间：0.038488s][吞吐率：25.98req/s] [内存消耗：1,527.10kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000049s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001626s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'bootstrap.min.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:38+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/fastadmin.min.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/fastadmin.min.css.map [运行时间：0.038389s][吞吐率：26.05req/s] [内存消耗：1,526.80kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000045s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002022s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'fastadmin.min.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:38+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/skins/skin-green.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/skins/skin-green.css.map [运行时间：0.044796s][吞吐率：22.32req/s] [内存消耗：1,526.75kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000399s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002449s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'skins',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:38+08:00 ] ::1 ::1 GET /fastadmin/public/index.php/admin/ajax/lang?callback=define&controllername=index&v=1512994418
+[ info ] localhost:8888/fastadmin/public/index.php/admin/ajax/lang?callback=define&controllername=index&v=1512994418 [运行时间：0.042452s][吞吐率：23.56req/s] [内存消耗：2,330.29kb] [文件加载：66]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000038s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001808s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://localhost:8888/fastadmin/public/index.php/admin/index/index',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'index',
+  'v' => '1512994418',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000337s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Applications/MAMP/htdocs/fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000141s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/index.php/admin/dashboard?addtabs=1
+[ info ] localhost:8888/fastadmin/public/index.php/admin/dashboard?addtabs=1 [运行时间：0.070408s][吞吐率：14.20req/s] [内存消耗：3,196.37kb] [文件加载：75]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000052s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001537s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'dashboard',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost:8888/fastadmin/public/index.php/admin/dashboard?ref=addtabs',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000335s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Dashboard->index[ /Applications/MAMP/htdocs/fastadmin/application/admin/controller/Dashboard.php ]
+[ info ] [ VIEW ] /Applications/MAMP/htdocs/fastadmin/public/../application/admin/view/dashboard/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+  5 => 'totaluser',
+  6 => 'totalviews',
+  7 => 'totalorder',
+  8 => 'totalorderamount',
+  9 => 'todayuserlogin',
+  10 => 'todayusersignup',
+  11 => 'todayorder',
+  12 => 'todayunsettleorder',
+  13 => 'sevendnu',
+  14 => 'sevendau',
+  15 => 'paylist',
+  16 => 'createlist',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000118s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000488s ] mysql:dbname=fastadmin;host=localhost;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.003713s ]
+[ sql ] [ SQL ] SELECT `AuthGroupAccess`.`uid`,`AuthGroupAccess`.`group_id`,`AuthGroup`.`id`,`AuthGroup`.`pid`,`AuthGroup`.`name`,`AuthGroup`.`rules` FROM `fa_auth_group_access` `AuthGroupAccess` LEFT JOIN `fa_auth_group` `AuthGroup` ON `AuthGroupAccess`.`group_id`=`AuthGroup`.`id` WHERE  (  AuthGroupAccess.uid='1' and AuthGroup.status='normal' ) [ RunTime:0.000730s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.002546s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000782s ]
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/index.php/admin/moment/moment/index?addtabs=1
+[ info ] localhost:8888/fastadmin/public/index.php/admin/moment/moment/index?addtabs=1 [运行时间：0.078184s][吞吐率：12.79req/s] [内存消耗：3,109.41kb] [文件加载：74]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000044s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001515s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'moment.moment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost:8888/fastadmin/public/index.php/admin/moment/moment/index?ref=addtabs',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+  'addtabs' => '1',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000300s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\moment\Moment->index[ /Applications/MAMP/htdocs/fastadmin/application/admin/controller/moment/Moment.php ]
+[ info ] [ VIEW ] /Applications/MAMP/htdocs/fastadmin/public/../application/admin/view/moment/moment/index.html [ array (
+  0 => 'breadcrumb',
+  1 => 'site',
+  2 => 'config',
+  3 => 'auth',
+  4 => 'admin',
+) ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000173s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:dbname=fastadmin;host=localhost;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.002477s ]
+[ sql ] [ SQL ] SELECT `AuthGroupAccess`.`uid`,`AuthGroupAccess`.`group_id`,`AuthGroup`.`id`,`AuthGroup`.`pid`,`AuthGroup`.`name`,`AuthGroup`.`rules` FROM `fa_auth_group_access` `AuthGroupAccess` LEFT JOIN `fa_auth_group` `AuthGroup` ON `AuthGroupAccess`.`group_id`=`AuthGroup`.`id` WHERE  (  AuthGroupAccess.uid='1' and AuthGroup.status='normal' ) [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.002343s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000872s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = '/admin/moment/moment/index' LIMIT 1 [ RunTime:0.000571s ]
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/fastadmin.min.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/fastadmin.min.css.map [运行时间：0.033169s][吞吐率：30.15req/s] [内存消耗：1,526.80kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001841s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'fastadmin.min.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/skins/skin-green.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/skins/skin-green.css.map [运行时间：0.033257s][吞吐率：30.07req/s] [内存消耗：1,526.75kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000047s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001828s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'skins',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/backend.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/backend.css.map [运行时间：0.036476s][吞吐率：27.42req/s] [内存消耗：1,526.74kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000048s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001854s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'backend.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/bootstrap.min.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/bootstrap.min.css.map [运行时间：0.036794s][吞吐率：27.18req/s] [内存消耗：1,526.80kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000031s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001826s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'bootstrap.min.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/bootstrap.min.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/bootstrap.min.css.map [运行时间：0.037772s][吞吐率：26.47req/s] [内存消耗：1,526.80kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000064s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002022s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'bootstrap.min.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/fastadmin.min.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/fastadmin.min.css.map [运行时间：0.037020s][吞吐率：27.01req/s] [内存消耗：1,526.80kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000044s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001678s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'fastadmin.min.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/backend.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/backend.css.map [运行时间：0.039733s][吞吐率：25.17req/s] [内存消耗：1,526.74kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000043s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001636s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'backend.css.map',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/assets/css/skins/skin-green.css.map
+[ info ] localhost:8888/fastadmin/public/assets/css/skins/skin-green.css.map [运行时间：0.041465s][吞吐率：24.12req/s] [内存消耗：1,526.75kb] [文件加载：49]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000044s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002162s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'skins',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/index.php/admin/ajax/lang?callback=define&controllername=dashboard&v=1512994419
+[ info ] localhost:8888/fastadmin/public/index.php/admin/ajax/lang?callback=define&controllername=dashboard&v=1512994419 [运行时间：0.043032s][吞吐率：23.24req/s] [内存消耗：2,330.34kb] [文件加载：66]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000039s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001327s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://localhost:8888/fastadmin/public/index.php/admin/dashboard?addtabs=1',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'dashboard',
+  'v' => '1512994419',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000236s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Applications/MAMP/htdocs/fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000128s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-12-11T20:13:39+08:00 ] ::1 ::1 GET /fastadmin/public/index.php/admin/ajax/lang?callback=define&controllername=moment.moment&v=1512994419
+[ info ] localhost:8888/fastadmin/public/index.php/admin/ajax/lang?callback=define&controllername=moment.moment&v=1512994419 [运行时间：0.041461s][吞吐率：24.12req/s] [内存消耗：2,330.41kb] [文件加载：66]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000031s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001341s ]
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'ajax',
+    2 => 'lang',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:8888',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://localhost:8888/fastadmin/public/index.php/admin/moment/moment/index?addtabs=1',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+  'cookie' => 'sidebarStatus=1; Admin-Token=admin; Webstorm-53877e7e=6a4b02b2-ec18-4d54-af3a-c1ec00029d33; PHPSESSID=a702f23f5cc26da04bc0e8da56deb015; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1512993113; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1512994037',
+)
+[ info ] [ PARAM ] array (
+  'callback' => 'define',
+  'controllername' => 'moment.moment',
+  'v' => '1512994419',
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000232s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\Ajax->lang[ /Applications/MAMP/htdocs/fastadmin/application/admin/controller/Ajax.php ]
+[ info ] [ BEHAVIOR ] Run app\admin\behavior\AdminLog @app_end [ RunTime:0.000196s ]
+[ info ] [ LOG ] INIT File

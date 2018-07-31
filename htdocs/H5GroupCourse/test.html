@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<link rel="icon" href="//cn-head-cdn.nihaotalk.com/pub/img/favicon.ico" type="image/x-icon" /> 
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" href="//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/css/dropload.css">
+		<link rel="stylesheet" href="//ali-hk-cdn.nihaotalk.com/static/flag/emojione-sprite-64.css">
+		<script src="//ali-hk-cdn.nihaotalk.com/static/flag/flag_source.js"></script>
+		<script>var html = document.querySelector('html');var width = html.getBoundingClientRect().width;html.style.fontSize = width / 10 + 'px';</script>
+		<style type="text/css">
+			*{margin:0;padding:0;border:none;text-decoration: none;-webkit-tap-highlight-color: transparent;}html,body{width:100%;height:100%;-webkit-overflow-scrolling: touch;}img{max-width:100%;}
+			html{
+				font-size: 100px;
+				-webkit-overflow-scrolling: touch;
+			}
+			body{	
+				font-family: PingFangSc,SFUIText;
+				font-size: 0.4266666666666667rem;
+				background-color: #f7f7fb;
+			}
+			img{
+				vertical-align: middle;
+			}
+			.courseDetail {
+			  width: 100%;
+			  margin: auto;
+			  height: 100%;
+			  overflow-x: hidden;
+			  background-color: #f7f7fb;
+			}
+			.voice {
+			  position: relative;
+			  width: 100%;
+			  height: 5.6rem;
+			  background-color: #000;
+			  z-index: 999;
+			  overflow: hidden;
+			  -webkit-user-select: none;
+			}
+			.shadow,.ppt,#notSupport{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				z-index: 9999;
+			}
+			#notSupport{
+				color: red;
+			    text-align: center;
+			    padding-top: 25%;
+			    background: #000;
+			    box-sizing: border-box
+			}
+			.ppt{z-index: 999;text-align: center;}
+			.ppt > img{width: auto;max-height: 100%;}
+			.voice .wrap{
+				position: absolute;
+				top: 0;
+				left: 0;
+				 
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+				overflow: hidden;
+				z-index: 99999;
+			}
+			.top-menu {
+			  position: relative;
+			  width: 100%;
+			  height: 0.6666666666666666rem;
+			   
+			  background-color: rgba(0,0,0,0.5);
+			}
+			.top-menu .back {
+			  position: absolute;
+			  top: 0;
+			  left: 5%;
+			  width: 0.6666666666666666rem;
+			  height: 0.6666666666666666rem;
+			}
+			.top-menu .title {
+			  width: 100%;
+			  text-align: center;
+			  font-family: SFUIText;
+			  font-size: 0.48rem;
+			  font-weight: 600;
+			  color: #ffffff;
+			}
+			.loading {
+			  position: absolute;
+			  top: 50%;
+			  width: 100%;
+			  margin-top: -0.10666666666666667rem;
+			  line-height: 0.21333333333333335rem;
+			  text-align: center;
+			}
+			.loading .dot {
+			  display: inline-block;
+			  width: 0.21333333333333335rem;
+			  height: 0.21333333333333335rem;
+			  margin-left: 0.16rem;
+			  border-radius: 50%;
+			  opacity: 0.3;
+			  background-color: #ffffff;
+			  vertical-align: middle;
+			}
+			.loading .on {opacity: 1;}
+			.play-error {
+			  position: absolute;
+			  width: 100%;
+			  top: 50%;
+			  margin-top: -0.5466666666666666rem;
+			  line-height: 1.0933333333333333rem;
+			  text-align: center;
+			}
+			.play-error .error-pic {
+			  display: inline-block;
+			  width: 1.0933333333333333rem;
+			  height: 1.0933333333333333rem;
+			  background: url(//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/img/ic-chat-fail-normal.svg) no-repeat center/cover;
+			
+			}
+			.play-error .error-text {
+			  display: inline-block;
+			  width: 100%;
+			  color: #7e7e7e;
+			}
+			 
+			.bottom-controls {
+			  position: absolute;
+			   
+			  bottom: 0;
+			  width: 100%;
+			  height: 0.7466666666666667rem;
+			  overflow: hidden;
+			  padding-left:3%;
+			  background-color: rgba(0,0,0,0.5);
+			}
+			.bottom-controls .btn {
+			  display: block;
+			  float: left;
+			  width: 0.7466666666666667rem;
+			  height: 0.7466666666666667rem;
+			  cursor: pointer;
+			}
+			.bottom-controls .play {
+			  background: url(//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/img/ic-chat-pause-normal.svg) no-repeat center/cover;
+			}
+			.bottom-controls .pause {
+			  background: url(//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/img/ic-chat-play-normal.svg) no-repeat center/cover;
+			}
+			.bottom-controls .progress-bar {
+			  float: left;
+			  width: 90%;
+			  height: 100%;
+			  line-height: 0.7466666666666667rem;
+			}
+			.progress-bar .play-time,.progress-bar .duration{
+				display: block;
+				width: 13%;
+				height: 100%;
+				float: left;
+				font-family: SFUIText;
+				font-size: 0.32rem;
+				text-align: center;
+				color: #ffffff;
+			}
+			.progress-bar .duration{
+				float: left;
+			}
+			.progress-bar .progress-wrap{
+				position: relative;
+				float: left;
+				width: 53%;
+				height:  0.05333333333333334rem;
+				margin-left: 20px;
+				margin-top: 0.32rem;
+		  		border-radius: 0.08rem;
+				background-color: rgba(255,255,255,.3) ;
+			}
+			.progress-wrap .progress{
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 0;
+				background: #FFFFFF;
+			}
+			.progress:after{
+				content: '';
+				position: absolute;
+				right: -0.14666666666666667rem;
+		 		top: -0.12rem;
+			    display: block;
+			    width: 0.29333333333333333rem;
+			    height: 0.29333333333333333rem;
+				border-radius: 50%;
+				background: #FFFFFF;
+			}
+			.full-screen{
+				display: block;
+				float: left;
+				width: 0.7466666666666667rem;
+		  		height: 0.7466666666666667rem;
+				background: url(//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/img/ic-chat-maximize-normal.svg) no-repeat center/cover;
+				cursor: pointer;
+			}
+			.bottom-controls .fullScreenBar{
+				width: 90%;
+			} 
+			.bottom-controls .progress-bar .fullScreenWrap{
+				width: 53%;
+			}
+			 
+			.schooltime {
+			  width: 100%;
+			  height: 1.0666666666666667rem;
+			  background-color: #fff;
+			  padding: 0 0.32rem;
+			  line-height: 1.0666666666666667rem;
+			}
+			.schooltime .icon-time {
+			  display: inline-block;
+			  width: 0.4266666666666667rem;
+			  height: 0.4266666666666667rem;
+			  background: url(//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/img/ic-particulars-time-normal.svg) no-repeat center/cover;
+			  vertical-align: middle;
+			}
+			.schooltime .text {
+			  color: #484848;
+			  font-size: 12px;
+			}
+			 
+			.content {
+			  width: 100%;
+			  height: auto;
+			  padding-bottom: 1.32rem;
+			}
+			.content:after{
+				display: block;
+				content: '';
+				clear: both;
+				overflow: hidden;
+			}
+			.content .share-topic {
+			  margin: 15px 0 0 0.32rem;
+			  width: 9.2rem;
+			  height: 2.533333333333333rem;
+			  border-radius: 0.16rem;
+			  background-color: #ffffff;
+			  border: solid 1px rgba(0, 0, 0, 0.18);
+			  padding: 0.26666666666666666rem;
+			  box-sizing: border-box;
+			  margin-bottom: 0.13333333333333333rem;
+
+			}
+			.share-topic .pic {
+			  display: block;
+			  float: left;
+			  width: 2rem;
+			  height: 2rem;
+			  overflow: hidden;
+			}
+			.share-topic .pic > img {
+			  width: 100%;
+			  height: 100%;
+			}
+			.share-topic .text {
+			  float: left;
+			  margin-left: 0.3333333333333333rem;
+			  width: 6.266666666666667rem;
+			  height: 100%;
+			}
+			.share-topic .text .title {
+			  display: block;
+			  font-size: 0.4266666666666667rem;
+			  font-weight: 500;
+			  line-height: 1.19;
+			  text-align: left;
+			  color: #484848;
+
+			}
+			.share-topic .text .introduce {
+			  display: block;
+			  font-size: 0.37333333333333335rem;
+			  line-height: 1.21;
+			  letter-spacing: -0.005333333333333334rem;
+			  font-family: PingFangSC,SFUIText;
+			  text-align: left;
+			  color: #7e7e7e;
+			  height: 0.9066666666666666rem;
+			  text-overflow: ellipsis;
+			  overflow: hidden;
+			  white-space: nowrap;
+			}
+			.content .me,.content .other {
+			  margin-top: 0.18666666666666668rem;
+			}
+			.content .me {
+			  width: 100%;
+			  float: left;
+			  padding: 0 0.32rem;
+			  box-sizing: border-box;
+			}
+			.content .other {
+			  width: 100%;
+			  float: right;
+			  padding: 0 0.32rem;
+			  box-sizing: border-box;
+			  position: relative;
+			}
+			.content .nickname {
+			  line-height: 0.4rem;
+			  margin-bottom: 0.12rem;
+			  font-size: 0.32rem;
+			  color: #7e7e7e;
+			}
+			.me .nickname {
+			  margin-left: 1.7333333333333334rem;
+			}
+			.other .nickname {
+			  text-align: right;
+			  margin-right: 1.7333333333333334rem;
+			}
+			.content .user-pic {
+			  display: block;
+			  position: relative;
+			  width: 1.0666666666666667rem;
+			  height: 1.0666666666666667rem;
+			}
+			.user-pic .flag {
+			  position: absolute;
+			  bottom: -0.26666666666666666rem;
+			   
+			  transform: scale(.32,.32);
+			  border-radius: 50%;
+			}
+			.me .user-pic .flag {
+			  left: 0;
+			}
+			.other .user-pic .flag {
+			  left: 0;
+			}
+			.me .user-pic {
+			  float: left;
+			}
+			.other .user-pic {
+			  float: right;
+			}
+			.user-pic > img {
+			  border-radius: 50%;
+			}
+			.me .message {
+			  float: left;
+			  margin-left: 0.3466666666666667rem;
+			  background-color: #ffffff;
+			  border: solid 1px rgba(0, 0, 0, 0.18);
+			}
+			.other .message {
+			  float: right;
+			  margin-right: 0.3466666666666667rem;
+			  background-color: #dbebff;
+			  border: solid 1px rgba(0, 0, 0, 0.18);
+			}
+			.content .message {
+			  max-width: 4.346666666666667rem;
+			  color: #333;
+			  border-radius: 0.48rem;
+			  padding: 9px 0.48rem;
+			}
+			.hide {
+			  display: none;
+			}
+			.fl-t {
+			  float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="courseDetail">
+			<section class="voice">
+				<section class="shadow"></section>
+				<section class="ppt">
+					<img src="" alt="" />
+				</section>
+				<section id="notSupport" class="hide">当前浏览器不支持acc格式的音频，请尝试其他浏览器。</section>
+				<audio width="100%" height="100%" preload="metadata"  src="">您的浏览器版本过低，不支持audio。</audio>
+				<section class="wrap">
+					<section class="top-menu">
+						<a class="back fl-t" href="##"><img src="//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/img/ic-profile-back-normal.svg" /></a>
+						<h1 class="title fl-t"> 测试课程02 </h1>
+					</section>
+					<p class="loading hide"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></p>
+					<p class="play-error hide">
+						<span class="error-pic"></span>
+						<span class="error-text">视频播放失败</span>
+					</p>
+					<section class="bottom-controls">
+						<span class="btn pause"></span>
+						<section class="progress-bar">
+							<span class="play-time">00:00</span>
+							<section class="progress-wrap">
+								<p class="progress"></p>
+							</section>
+							<span class="duration">00:00</span>
+							<span class="full-screen"></span>
+						</section>
+					</section>
+				</section>
+			</section>
+			
+			<section class="schooltime">
+				<span class="icon-time"></span>
+				<span class="text">上课时间：</span>
+			</section>
+			<section class="content">
+				<aside class="share-topic">
+					<span class="pic"><img src="" alt="" /></span>
+					<p class="text">
+						<span class="title"></span>
+						<span class="introduce"></span>
+					</p>
+				</aside>
+				<section class="lists">
+						
+				</section>
+				
+		</section>
+		<script src="//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/js/zepto.min.js"></script>	
+		<script src="//ali-hk-cdn.nihaotalk.com/groupclass/lessonShare/js/dropload.js"></script>
+		
+		<script>
+		window.onload = function() {
+			
+			var ppt_url = "ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/18025/m_e2a7f65a66b699569ce093ac576fa0df.txt",
+				voice_url = "ali-hk-cdn.nihaotalk.com/groupclass/18025/m_dab1431d3e0b5298eaf5684322a84a6c.aac",
+				begin_time_stamp = "",
+				room_id = "HttD",
+				record_obid = "5a4b05a4372cbf45226a5cb2",
+				teacher_openid = "A0qSHN==",
+				openid = "SOSaLN==",
+				frontEndConfig = "{\"apiList\":{\"getFileData\":\"/s/gl/getFileData\",\"groupLesson\":\"/s/gl/groupLesson\",\"lessonRecord\":\"/s/gl/lessonRecord\",\"recordMsg\":\"/s/gl/recordMsg\",\"userInfo\":\"/s/gl/userInfo\"},\"lessonPicPlaceHolder\":\"//ali-hk-cdn.nihaotalk.com/cs_logo.jpg\",\"pptPicDefault\":\"//ali-hk-cdn.nihaotalk.com/bai/2/26/75a77b70fc101475db49d7a78a15f17e/0.jpg\"}";
+
+			var config = JSON.parse(frontEndConfig);
+			var apiList = config.apiList;
+
+			getpptData(window.location.href,pptVoideo);
+			
+			function getpptData(url,callback) {
+				var seq = 0;
+				if (ppt_url) {
+					console.log(apiList.getFileData+'?url=http://'+ppt_url);
+					loadJsonDoc(apiList.getFileData+'?url=http://'+ppt_url,'GET',success);
+				}else{
+					console.log(voice_url);
+					callback('//'+voice_url);
+				}
+				setHTMlInfo();
+				requestMsg(record_obid,room_id)
+				function success(data){
+					console.log(data);
+					var timeArr = [], imgArr = [];
+					data.recordppt.forEach(function(value,index){
+						timeArr.push(value.TimeStamp);
+						imgArr.push(value.Url);
+					});
+					var voiceUrl = '//'+voice_url;
+					callback(voiceUrl,timeArr,imgArr);
+				}
+			}
+			function setHTMlInfo (val) {
+				var courseTime = document.querySelector('.schooltime .text'), shareTopic = document.querySelector('.share-topic');
+				courseTime.innerHTML += '2018-01-02 12:08:04'; 
+				shareTopic.querySelector('.pic img').src = config.lessonPicPlaceHolder;
+				shareTopic.querySelector('.text .title').innerText = '测试课程02' ;
+				shareTopic.querySelector('.text .introduce').innerText = '02' ;
+
+			}
+			function loadJsonDoc(url,method,callback,data){
+				xhr = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+				if(xhr!=null){
+				  	xhr.onreadystatechange=function () {
+				  		if (xhr.readyState==4&&xhr.status==200){
+						    callback(JSON.parse(xhr.responseText));
+						}
+				  	};
+				  	xhr.open(method,url,true);
+				  	xhr.send();
+				}else{alert("Your browser does not support XMLHTTP.");}
+		  	}
+			function pptVoideo(voiceUrl,TimeArr,ImgArr){
+				var timer = null;
+				var loading = document.querySelector('.loading');
+				var shadow = document.querySelector('.shadow');
+				var dots = loading.querySelectorAll('.dot');
+				var load_error = document.querySelector('.play-error');
+				var cross = false;
+				var initWidth = document.documentElement.clientWidth;
+				var initHeight = document.documentElement.clientHeight;
+				var exitFullScreen = document.querySelector('.top-menu .back'),
+					fullScreen = document.querySelector('.bottom-controls .full-screen');
+				var pptImg = document.querySelector('.ppt img');
+				var last = 0;
+				var pptIndex = 0, timeInterval = TimeArr?getTimeInterval(TimeArr):0;
+				ImgArr = ImgArr?ImgArr:[config.pptPicDefault];
+				console.log(ImgArr);
+				var len = ImgArr?ImgArr.length:0;
+				exitFullScreen.onclick = function(){
+					if(cross){
+						exitFull();
+						cross = false;
+					}else{
+						window.history.back();
+					}
+				}
+				fullScreen.onclick = function(){
+					if(!cross){
+						requestFullScreen();
+					}else{
+						exitFull();
+					}
+					cross = !cross;
+				}
+				function getTimeInterval(arr) {
+					var newArr = [0];
+					arr.forEach(function(val,i){
+						if(i>0) {
+							var interval = val-arr[i-1];
+							newArr.push(last + val-arr[i-1]);
+							last = last + val-arr[i-1];
+						}
+					})
+					return newArr;
+				}
+				
+				function requestFullScreen() {
+				    var de = document.documentElement;
+				    if (de.requestFullscreen) {
+				        de.requestFullscreen();
+				    } else if (de.mozRequestFullScreen) {
+				        de.mozRequestFullScreen();
+				    } else if (de.webkitRequestFullScreen) {
+				        de.webkitRequestFullScreen();
+				    } else if (de.msRequestFullScreen) {
+				    	de.msRequestFullScreen();
+				    }
+				}
+				
+				function exitFull() {
+				     if (document.exitFullscreen) {
+				      document.exitFullscreen();
+				    } else if (document.msExitFullscreen) {
+				      document.msExitFullscreen();
+				    } else if (document.mozCancelFullScreen) {
+				      document.mozCancelFullScreen();
+				    } else if (document.webkitExitFullscreen) {
+				      document.webkitExitFullscreen();
+				    }
+				}
+				function loadingAnimate(){ 
+					var last = 0,length = dots.length;
+					shadow.style.backgroundColor = '#353535';
+					loading.className = 'loading';
+					timer = setInterval(function(){
+						dots[last].className = 'dot';
+						last = ++last%length;
+						dots[last].className = 'dot on';
+					},500);
+				}
+				function loaded (){
+					if(timer){
+						clearInterval(timer);
+						shadow.style.backgroundColor = 'transparent';
+						loading.className = 'loading hide';
+					}
+				}
+				function loadError (){
+					shadow.style.backgroundColor = '#353535';
+					load_error.className = 'play-error';
+				}
+				function loadSuccess (){
+					load_error.className = 'play-error hide';
+					shadow.style.backgroundColor = 'transparent';
+				}
+				var evt = "onorientationchange" in window ? "orientationchange" : "resize";
+			    window.addEventListener("orientationchange", changeOrientation, false);
+				function changeOrientation() {
+			         var width = document.documentElement.clientWidth;
+			         var height =  document.documentElement.clientHeight;
+			         var voice = document.getElementsByClassName('voice')[0],
+			         	 schooltime = document.getElementsByClassName('schooltime')[0],
+			         	 content = document.getElementsByClassName('content')[0],
+			         	 fullScreen = document.getElementsByClassName('full-screen')[0],
+			         	 progressWrap = document.getElementsByClassName('progress-wrap')[0];
+			         if( width < height ){
+			            voice.style.height = initWidth + 'px';
+			            schooltime.style.display = 'none';
+			            content.style.display = 'none';
+			            fullScreen.className = 'full-screen hide';
+			            progressWrap.style.width = '69%';
+			         }
+			         else{
+			         	voice.style.height = '5.6rem';
+			         	schooltime.style.display = 'block';
+			            content.style.display = 'block';
+			            fullScreen.className = 'full-screen';
+			            progressWrap.style.width = '53%';
+			         }
+			    }
+				voicePlay();
+				function voicePlay(){
+					var m_voice = document.querySelector('.voice audio'),
+						playBtn = document.querySelector('.bottom-controls .btn'),
+						progress = document.querySelector('.bottom-controls .progress'),
+						maxW = document.querySelector('.bottom-controls .progress-wrap').clientWidth,
+						duration = document.querySelector('.bottom-controls .duration'),
+						currentTimeText = document.querySelector('.bottom-controls .play-time'),
+						progressBar = document.querySelector('.bottom-controls .progress-bar'),
+						progressWrap = document.querySelector('.bottom-controls .progress-wrap'),
+						voiceBox = document.querySelector('.voice'),
+						content = document.querySelector('.schooltime');	
+					m_voice.src = voiceUrl;
+					pptImg.src = ImgArr[pptIndex]; 
+					pptImg.addEventListener('error',function () {
+						loadError();
+						if (!m_voice.paused) {
+							m_voice.pause();
+						}
+						console.error(' pic load error!');
+					});
+					if (m_voice.canPlayType('audio/mp4;codecs="mp4a.40.5"')==''){
+						document.getElementById('notSupport').className = '';
+						console.error('不支持acc媒体格式');
+						return;
+					}
+					pptImg.addEventListener('load', function (){
+						loadSuccess();
+					});
+					
+					m_voice.addEventListener('waiting',function() {
+
+						loadingAnimate();
+					});
+					m_voice.addEventListener('canplay', function(){
+						duration.innerText = time(this.duration);
+						drag(progress,progressBar,maxW,m_voice);
+						loaded();
+					});
+					m_voice.addEventListener('loadedmetadata', function () {
+						loaded();
+						duration.innerText = time(this.duration);
+					});
+					m_voice.addEventListener('error',function(){
+						console.error("Media data load error!");
+						loadError();
+					});
+					m_voice.addEventListener('timeupdate',function(){
+						 var curT = time(this.currentTime);
+						 var i = 0;
+			             currentTimeText.innerText = curT; 
+			             if(curT){  
+			                var w = (this.currentTime/Math.floor(this.duration))*maxW;
+			                progress.style.width = w/maxW*100+'%';
+			             }else{
+			             	progress.style.width = 0;
+			             }
+			             if (timeInterval) {
+				             pptIndex = getIndex(this.currentTime);
+				             pptImg.src = ImgArr[pptIndex];
+			             }
+
+					});
+					m_voice.addEventListener("play",function () {
+			           playBtn.className = 'btn play';
+			        });
+			        m_voice.addEventListener("pause",function () {
+			            playBtn.className = 'btn pause';
+			        });
+			        m_voice.addEventListener("playing",function () {
+			            m_voice.play();
+			            loaded();
+			            document.querySelector('.content').onclick = function() {
+			            	    m_voice.pause();
+			            }
+			        });
+			        m_voice.addEventListener("ended",function () {
+		             	this.currentTime = 0;
+			        });
+					playBtn.onclick = function(e){ 
+						 e = e || window.event;
+			            e.stopPropagation();
+			            if (!m_voice.paused) {
+			                m_voice.pause();
+			                playBtn.className = 'btn pause';
+			                return;
+			            }
+			            if (m_voice.readyState !== 0){
+			            		m_voice.play();
+			            		playBtn.className = 'btn play';
+			            }
+					}
+					function getIndex(time){
+						var index = 0;
+						if (!timeInterval) return;
+						for (var i=len-1;i>0;i--){
+							if(timeInterval[i]<=time*1000) {
+								index = i;
+								break;
+							}
+						}
+						return index;
+					}
+					
+			        function drag(obj,mTarget,maxw,medio) {
+			            
+			            var dx, dw;
+			            mTarget.addEventListener("touchstart",function (e) {
+			                if( e.targetTouches.length === 1 ){
+			                    var touch = e.targetTouches[0];
+			                    
+			                    dx = touch.pageX;
+			                    dw = obj.clientWidth;
+			                }
+			            });
+			            mTarget.addEventListener("touchmove",function (e) {
+			            	e.stopPropagation();
+			                if( e.targetTouches.length === 1){
+			                    try {
+			                        var touch = e.targetTouches[0];
+			                        var _x = touch.pageX - dx;
+			                        dw += _x;
+			                        dw = Math.max(0,dw);
+			                        dw = Math.min(dw,maxw);
+			                        obj.style.width = dw/maxw*100+'%';
+			                        m_voice.currentTime = (dw/maxw)*Math.floor(m_voice.duration);
+			                    }catch (e){}
+			                    dx = touch.pageX;
+			                }
+			            });
+			        }	
+				}
+				function time( changeTime ){ 
+		            changeTime = parseFloat( changeTime );
+		            var m,s;
+		            m = Math.floor( changeTime%3600/60 ); 
+		            s = Math.floor( changeTime%60 ); 
+		            return twoDigits(m)+':'+twoDigits(s);
+		        }
+				function twoDigits(num){
+					return num>=10?num:'0'+num;
+				}
+			}
+			function requestMsg(obId,roomId){
+			    var seq = 0;
+			    var userInfo = {};
+			    
+			    var result = '';
+			    
+			    $('.content').dropload({
+			        scrollArea : window,
+			        loadDownFn : function(me){
+			            
+			            $.ajax({
+			                type: 'GET',
+			                
+			                
+			                url: apiList.recordMsg+'/'+obId+'?cliseq='+seq+'&roomid='+roomId+'',
+			                dataType: 'json',
+			                success: function(data){
+			                	console.log(data);
+			                	seq = data.cur_max_seq;
+			                	data = data.data;
+			                    var arrLen = data?data.length:0;
+			                   
+			                    if(arrLen > 0){
+			                    	 apendTemplate(arrLen,data);
+			                    
+			                    }else{
+			                        
+			                        me.lock();
+			                        
+			                        me.noData();
+			                    }
+			                    
+			                    setTimeout(function(){
+			                        
+			                        $('.lists').append(result);
+			                        
+			                        me.resetload();
+			                    },1000);
+			                },
+			                error: function(xhr, type){
+			                    console.error(type);
+			                    
+			                    
+			                }
+			                
+			            });
+			        }
+			    });
+    			function apendTemplate (arrLen,data) {
+    					var sender_id = '';
+                        for(var i=0; i<arrLen; i++){
+                        	sender_id = data[i].sender_id;
+                        	userInfo[sender_id] = {};
+                    	}
+                    	getUserInfo(callback);
+                    	function callback() {
+                    		for(var j=0; j<arrLen; j++){
+	                   			var classname = 'other'; 
+	                        	var pic = '',flagName = '';
+	                        	var userid = data[j].sender_id;
+	                        	if(userid===teacher_openid){classname = 'me';}
+	                        	for(var key in userInfo) {
+	                        		if (userid===key) {	
+	                        			pic = userInfo[key].pic;
+	                        			flagName = userInfo[key].flag;
+	                        		}
+	                        	}
+	                            result +=   '<section class="'+classname+'">'+
+	    										'<p class="nickname">'+data[j].sender_name+'</p>'+
+	    										'<span class="user-pic">'+
+	    											'<img src="'+pic+'" alt="" />'+
+	    											'<span  class="flag emojione-64-flags '+flagName+'" ></span>'+
+	    										'</span>'+
+	    										'<span class="message">'+data[j].text.text+'</span>'+
+	    									'</section>';
+                   			}
+                    	};
+				};
+			
+				function getUserInfo(callback) {
+				 	
+				 	var requestUrl = apiList.userInfo+'?openid=';
+	            	for (key in userInfo) {
+	            		requestUrl += key+',';
+	            	}
+	            	requestUrl = requestUrl.replace(/\,$/,'');
+	            	console.log(requestUrl);
+	            	loadJsonDoc(requestUrl,'GET',setUserInfo);
+	            	function setUserInfo (data) {
+	            		data = data.data;
+	            		for (key in data) {
+	            			userInfo[key].HU = data[key].HU;
+	            			userInfo[key].CN = data[key].CN;
+	            			userInfo[key].pic = data[key].HU;
+	            			userInfo[key].flag = flagParse(data[key].CN);
+	             		}
+	             		callback();
+	            	}
+	            	function flagParse(params) {
+	            	  var areaCode = params;
+	            	  if (!(/^[A-Z]+$/.test(areaCode))) {
+	            	    return '';
+	            	  }
+	            	  switch(areaCode){
+	            	    case 'UK':  areaCode="GB"; break;
+	            	    case 'IK':  areaCode="AE"; break;
+	            	  }
+	            	  return flagSource[':flag_'+areaCode.toLowerCase()+':']?'_'+flagSource[':flag_'+areaCode.toLowerCase()+':'].uc_base:'';
+	             	}
+            	};
+			}
+		}
+		
+
+		</script>
+</html>

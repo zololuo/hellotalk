@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<link rel="icon" href="http://cn-head-cdn.nihaotalk.com/pub/img/favicon.ico" type="image/x-icon" /> 
+	<title>群组课详情</title>
+	<script>var html = document.querySelector('html');var width = html.getBoundingClientRect().width;html.style.fontSize = width / 10 + 'px';
+	</script>
+	<style>
+		*{margin:0;padding:0;border:none;text-decoration: none;-webkit-tap-highlight-color: transparent;}html,body{width:100%;height:100%;}img{max-width:100%;}
+		html{
+			font-size: 100px;
+		}
+		body{	
+			font-family: PingFangSc;
+			font-size: 0.4266666666666667rem;
+		}
+		img{
+			vertical-align: middle;
+		}
+		.courseDetail {
+		  width: 10rem;
+		  margin: auto;
+		  overflow: hidden;
+		}
+		.ht-adv {
+		  width: 100%;
+		  height: 1.6rem;
+		  -webkit-backdrop-filter: blur(0.13333333333333333px);
+		  backdrop-filter: blur(0.13333333333333333rem);
+		  background-color: rgba(255, 255, 255, 0.9);
+		  box-shadow: 0.13333333333333333px 0 0.26666666666666666px 0.13333333333333333px rgba(0, 0, 0, 0.05);
+		  overflow: hidden;
+		}
+		.ht-adv .logo {
+		  width: 3.5733333333333333rem;
+		  height: 0.9333333333333333rem;
+		  padding: 0.3333333333333333rem 0 0.3333333333333333rem 0.41333333333333333rem;
+		  float: left;
+		}
+		.ht-adv .logo > img {
+		  width: 0.9333333333333333rem;
+		  height: 0.9333333333333333rem;
+		  vertical-align: middle;
+		}
+		.ht-adv .logo-title {
+		  color: #000;
+		  margin-left: 0.34800000000000003rem;
+		  font-size: 0.4533333333333333rem;
+		  font-weight: bold;
+		}
+		.ht-adv .open-btn {
+		  float: right;
+		  width: 3.3333333333333335rem;
+		  height: 0.88rem;
+		  border-radius: 1.3333333333333333rem;
+		  background-color: #405bd3;
+		  text-align: center;
+		  line-height: 0.88rem;
+		  color: #fff;
+		  margin: 0.36rem 0.4rem 0.36rem 0;
+		  font-weight: normal;
+		  font-size: 0.32rem;
+		  font-family: PingFangSC;
+		  letter-spacing: 1px;
+		  cursor: pointer;
+		}
+		.course-title {
+		  padding: 0.38666666666666666rem 0.4rem 0 0.4rem;
+		}
+		.course-title > h1 {
+		  font-size: 0.5333333333333333rem;
+		  color: #333;
+		  letter-spacing: 1px;
+		}
+		.course-title .course-sourse {
+		  margin-top: 0.18666666666666668rem;
+		  font-size: 0.37333333333333335rem;
+		  color: #7e7e7e;
+		}
+
+		/* course-time */
+		.course-title .course-time {
+		  width: 100%;
+		  height: 2.84rem;
+		  padding: 0 0.38666666666666666rem;
+		}
+		.course-time .time-title {
+		  font-size: 0.4533333333333333rem;
+		  font-weight: 600;
+		  color: #333;
+		  margin-top: 0.4266666666666667rem;
+		  text-align: left;
+		  margin-bottom: 0;
+		}
+		.time {
+		  position: relative;
+		  width: 100%;
+		}
+		.time .icon-time {
+		  display: block;
+		  position: absolute;
+		  top: 0.36rem;
+		  width: 0.4533333333333333rem;
+		  height: 0.4533333333333333rem;
+		  border-radius: 50%;
+		  background: url('img/icon-time.svg') no-repeat center/cover;
+
+		}
+		.time .t {
+		  position: absolute;
+		  top: 0.29333333333333333rem;
+		  left: 0.72rem;
+		  width: 3.506666666666667rem;
+		  height: 0.6rem;
+		  font-family: SFUIText;
+		  font-size: 0.4266666666666667rem;
+		  color: #484848;
+		  font-weight: 400;
+		}
+		/* icon-right */
+		.course-time .icon-right {
+		  position: absolute;
+		  display: block;
+		  top: 0.5733333333333334rem;
+		  right: 0.36rem;
+		  width: 0.21333333333333335px;
+		  height: 0.3333333333333333rem;
+		  line-height: 0.3333333333333333rem;
+		  cursor: pointer;
+		}
+		.icon-right .rect,
+		.icon-right .rect-copy {
+		  position: absolute;
+		  display: block;
+		  width: 0.21333333333333335rem;
+		  height: 0.05333333333333334rem;
+		  border-radius: 0.05333333333333334rem;
+		  background-color: #c2c2c2;
+		}
+		.icon-right .rect {
+		  top: -0.05333333333333334rem;
+		  -webkit-transform: rotate(45deg);
+		  transform: rotate(45deg);
+		}
+		.icon-right .rect-copy {
+		  top: 0.05333333333333334rem;
+		  -webkit-transform: rotate(-45deg);
+		  transform: rotate(-45deg);
+		}
+		/* 分割线 */
+		.cut-off-rule {
+		  width: 100%;
+		  height: 0.26666666666666666rem;
+		  background-color: #f6f6f6;
+		}
+		/* course-info */
+		.course-info {
+		  width: 100%;
+		  /*height: 246px;*/
+
+		  padding: 0 0.4rem 0.48rem 0.4rem;
+		  box-sizing: border-box;
+		}
+		.course-info > h2 {
+		  margin-top: 0.8533333333333334rem;
+		  color: #333;
+		  font-size: 0.4533333333333333rem;
+		}
+		.tip {
+		  margin-top: 0.29333333333333333rem;
+		  width: 100%;
+		  padding-bottom: 0.8666666666666667rem;
+		  /*height: 122.5px;*/
+
+		  color: #484848;
+		  font-size: 0.4266666666666667rem;
+		  font-weight: 400;
+		}
+		.name {
+		  text-indent: -0.24rem;
+		  font-size: 0.4266666666666667rem;
+		}
+		.preferential {
+		  width: 100%;
+		}
+		.more {
+		  color: #2554a5;
+		  cursor: pointer;
+		}
+		/* teacher-info */
+		.teacher-info ,.course-record{
+		  width: 100%;
+		  padding: 0.3333333333333333rem 0.4rem 0.4266666666666667rem 0.4rem;
+		  box-sizing: border-box;
+		}
+		.teacher-info > h2,.course-record >h2 {
+		  color: #333;
+		  font-size: 0.4533333333333333rem;
+		}
+		.info {
+		  margin-top: 0.3466666666666667rem;
+		  font-size: 0.4266666666666667rem;
+		  letter-spacing: -0.008rem;
+		  color: #484848;
+		}
+		/* course-record */
+		.course-record .record{
+			padding: 0 0.38666666666666666rem;
+			margin-top: 0.18666666666666666rem;
+			font-size: 0.37333333333333335rem;
+		}
+		.course-record .record:after{
+			content: '';
+			display: block;
+			clear: both;
+			overflow: hidden;
+			
+		}
+		.course-record .record .record-time{
+			float: left;
+			color: #7e7e7e;
+		}
+		.course-record .record>a{
+			float: right;
+			color: #7e7e7e;
+		}
+		/* bottom-btn */
+		.bottom-btn {
+		  width: 100%;
+		  height: 1.4666666666666666rem;
+		  padding: 0.4rem 0;
+		  box-sizing: border-box;
+		  box-shadow: 0.13333333333333333rem 0 0.26666666666666666rem 0.13333333333333333rem rgba(0, 0, 0, 0.05);
+		}
+		.bottom-btn .shuxian {
+		  width: 1px;
+		  height: 1.3333333333333333rem;
+		}
+		.left-btn .pic {
+		  display: inline-block;
+		  margin: 0 0.2rem 0 1.16rem;
+		  width: 0.64rem;
+		  height: 0.64rem;
+		}
+		.bottom-btn .pic > img {
+		  width: 0.6133333333333333rem;
+		  margin-top: -0.06666666666666667rem;
+		}
+		.bottom-btn .text {
+		  height: 0.6rem;
+		  line-height: 0.6rem;
+		  font-size: 0.4266666666666667rem;
+		  font-weight: 600;
+		  vertical-align: baseline;
+		}
+		.left-btn,
+		.right-btn {
+		  cursor: pointer;
+		}
+		.left-btn .text {
+		  color: #49a836;
+		}
+		.right-btn {
+		  display: inline-block;
+		  margin: 0 1.16rem 0 0.2rem;
+		}
+		.right-btn .text {
+		  color: #405bd3;
+		}
+		.left-btn {
+		  float: left;
+		}
+		.right-btn {
+		  float: right;
+		}
+		.hide {
+		  display: none;
+		}
+		.fl-t{float: left;}
+		.fl-r{float: right;}
+	</style>
+</head>
+<body>
+	<section class="courseDetail">
+		<section class="ht-adv">
+			<section class="logo">
+				<img src="img/icon.svg">
+				<span class="logo-title">HelloTalk</span>
+			</section>
+			<a class="open-btn" href="https://www.hellotalk.com/m/OkVSHUMlEKIJVD">Open with App</a>
+		</section>
+		<section class="course-title">
+			<h1>HelloTalk外教每天口语话题课堂第一课-引导开口说英语</h1>
+			<p class="course-sourse">来自群聊：HelloTalk英语口语课</p>
+			<section class="course-time">
+				<p class="time-title">上课时间</p>
+				<p class="time">
+					<i class="icon-time"></i>
+					<span class="t">每周五晚上&nbsp;&nbsp;21:30</span>
+					<span class="icon-right">
+						<i class="rect"></i>
+						<i class="rect-copy"></i>
+					</span>
+				</p>
+			</section>
+		</section>
+		<p class="cut-off-rule"></p>
+		<section class="course-info">
+			<h2>课程简介</h2>
+			<section class="tip">
+				<p class="name">【温馨提示】</p>
+				<p>1、本系列课一共28节课，每节课40分钟主讲+课后纠音辅导<br>
+					2、每隔两天更新一节课，晚上19:30准时开课<br>
+				</p>
+			</section>
+			<section class="preferential">
+				<p class="name">【限时优惠】</p>
+				<p>现购买仅需19元</p>
+				<p class="fl-t">分享好友购买得5元优惠券</p>
+				<p class="hide">分享好友购买得5元优惠券</p>
+				<p class="hide">分享好友购买得5元优惠券</p>
+				<p class="hide">分享好友购买得5元优惠券</p><span class="more">…展开更多</span></p>
+			</section>
+		</section>
+		<p class="cut-off-rule"></p>
+		<section class="teacher-info">
+			<h2>老师简介</h2>
+			<p class="info">主讲人：语言运用及教育专家Brian
+现旅居英国，专长于语言教育、跨文化交流等领域。曾为北京新华社记者、埃及驻外记者，伦敦国际双语网站主编，上海外国语大学学士，英国伯恩茅斯大学硕士。<br>Speaker: Brian, the Language Application and Education Specialist
+Now living in the UK, specializing in language education, cross-cultural exchanges and other fields. He was a reporter for Beijing Xinhua News Agency, a foreign correspondent for Egypt, a chief editor for London International Bilingual Website, a bachelor from Shanghai International Studies University, and a master from Bournemouth University.</p>
+		</section>
+		<p class="cut-off-rule"></p>
+		<section class="course-record hide">
+			<h2>上课记录</h2>
+			<!-- <section class="record">
+				<p class="record-time">2017.11.21&nbsp;周二&nbsp;20:00</p>
+				<a href="##" >查看录像</a>
+			</section>
+			-->
+		</section>
+		<section class="bottom-btn hide">
+				<p class="left-btn">
+					<span class="pic"><img src="img/icon-peo.svg" alt=""></span>
+					<a href="##" class="text">加入群聊</a>
+				</p>
+				<i class="shuxian"></i>
+				<p class="right-btn">
+					<span class="pic"><img src="img/icon-teacher.svg" alt=""></span>
+					<a href="##" class="text">联系老师</a>
+				</p>
+		</section>
+	</section>
+</body>
+<script>
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	
+    if(isAndroid){
+     
+      	alert(1);
+        /*window.location.href = "openwjtr://com.tyrbl.wjtr"; 
+        window.setTimeout(function(){
+           window.location.href = "http://www.wjtr.com/download/index.html";
+        },2000);*/
+      
+    if(isiOS){
+		alert
+		// var ifr = document.createElement("iframe");
+		// ifr.src = "openwjtr://com.tyrbl.wjtr"; 
+		// ifr.style.display = "none";
+		// document.body.appendChild(ifr);
+		// window.setTimeout(function(){
+		// 	document.body.removeChild(ifr);
+		// 	window.location.href = "http://www.wjtr.com/download/index.html"; 
+		// },2000)
+	
+	}
+
+	(function () {
+		var lessonInfo = "{\"LessonObid\":\"5a3b7824372cbf126cca740e\",\"RecordUrlList\":[{\"record_obid\":\"5a3c853e372cbf7c10aca1a8\",\"ppt_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_8e222125e3743ef6ca8cfc672485b679.txt\",\"begin_time_stamp\":1513915710044},{\"record_obid\":\"5a3c8504372cbf7c10aca1a7\",\"begin_time_stamp\":1513915652003},{\"record_obid\":\"5a3c84c8372cbf7c10aca1a6\",\"begin_time_stamp\":1513915592130},{\"record_obid\":\"5a3c8448372cbf7c10aca1a5\",\"begin_time_stamp\":1513915464972},{\"record_obid\":\"5a3c8330372cbf7c10aca1a4\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_51ee11f0f640db9ce523bd83e8c9eb42.aac\",\"begin_time_stamp\":1513915184182},{\"record_obid\":\"5a3c82dd372cbf7c10aca1a3\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_351a2cd6892ffd4564139d7c0d859b0f.aac\",\"ppt_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_dd36471368d05f9b8127b8f7fa2790fa.txt\",\"begin_time_stamp\":1513915101765},{\"record_obid\":\"5a3c82bb372cbf7c10aca1a2\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_fee3f32f0ef083629f62d69488ccb469.aac\",\"begin_time_stamp\":1513915067561},{\"record_obid\":\"5a3c81f3372cbf7c10aca1a1\",\"ppt_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_554779fe49695ef4b3832253c2127ed0.txt\",\"begin_time_stamp\":1513914867828},{\"record_obid\":\"5a3c81af372cbf7c10aca1a0\",\"begin_time_stamp\":1513914799048},{\"record_obid\":\"5a3c8116372cbf7c10aca19f\",\"begin_time_stamp\":1513914646842},{\"record_obid\":\"5a3c7f0f372cbf7c10aca19d\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_e8a86813a5f07399739f846ef8dd1d45.aac\",\"begin_time_stamp\":1513914127062},{\"record_obid\":\"5a3c7ebd372cbf7c10aca19c\",\"begin_time_stamp\":1513914045137},{\"record_obid\":\"5a3c7e70372cbf7c10aca19b\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_18355e83933d7755b69ddce5a242b78b.aac\",\"begin_time_stamp\":1513913968742},{\"record_obid\":\"5a3c7e04372cbf7c10aca19a\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_9d422a5fb2bcdf2c17e1f4975f1684af.aac\",\"begin_time_stamp\":1513913860815},{\"record_obid\":\"5a3c7b62372cbf7c10aca194\",\"begin_time_stamp\":1513913186167},{\"record_obid\":\"5a3c785a372cbf7c10aca192\",\"begin_time_stamp\":1513912410218},{\"record_obid\":\"5a3c7765372cbf7c10aca191\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_c215780c8293d78ee2d472a0c62844f1.aac\",\"begin_time_stamp\":1513912165088},{\"record_obid\":\"5a3c7721372cbf7c10aca190\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_9c2710c20c788a50689a02576043f5d9.aac\",\"begin_time_stamp\":1513912097693},{\"record_obid\":\"5a3c617d372cbf1d2652ad14\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_1f769c3923e12143886d6f2644502a65.aac\",\"begin_time_stamp\":1513906557960},{\"record_obid\":\"5a3c5f3c372cbf1d2652ad13\",\"ppt_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_344caae79e7e62a30bb1c9cf16bf39cd.txt\",\"begin_time_stamp\":1513905980953},{\"record_obid\":\"5a3c5f0b372cbf1d2652ad12\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_f9f424729f17533df444c6f908fe0140.aac\",\"begin_time_stamp\":1513905931142},{\"record_obid\":\"5a3c5eed372cbf1d2652ad11\",\"begin_time_stamp\":1513905901638},{\"record_obid\":\"5a3c5d8c372cbf1d2652ad10\",\"begin_time_stamp\":1513905548652},{\"record_obid\":\"5a3c5cba372cbf1d2652ad0f\",\"begin_time_stamp\":1513905338138},{\"record_obid\":\"5a3c5c06372cbf1d2652ad0e\",\"begin_time_stamp\":1513905158826},{\"record_obid\":\"5a3c5b6c372cbf1d2652ad0d\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_2ff1e7a7ba76ae8959e49fcdf4a8a32b.aac\",\"begin_time_stamp\":1513905004845},{\"record_obid\":\"5a3b8678372cbf1d2652acdf\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_7722c716ebd579d721082578e7e18c48.aac\",\"begin_time_stamp\":1513850488663},{\"record_obid\":\"5a3b82ec372cbf1d2652acdd\",\"begin_time_stamp\":1513849580744},{\"record_obid\":\"5a3b81e9372cbf1d2652acdc\",\"begin_time_stamp\":1513849321387},{\"record_obid\":\"5a3b80e3372cbf1d2652acdb\",\"voice_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_f4822b22412b9eb762a909d93b79a7f2.aac\",\"begin_time_stamp\":1513849059291},{\"record_obid\":\"5a3b7dca372cbf1d2652acd6\",\"ppt_url\":\"ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/17997/m_e2cfcba4b8b9e850856c1a2dfdbaa091.txt\",\"begin_time_stamp\":1513848266347}],\"RoomId\":\"rMpD\",\"isInRoom\":0}";
+		var recordBox = document.querySelector('.course-record');
+		var record  = recordBox.querySelectorAll('.course-record .record'),
+			lookVideo = recordBox.querySelectorAll('.record a'),
+			recordTime = recordBox.querySelectorAll('.record .record-time');
+		var datas = JSON.parse(lessonInfo);
+		console.log(datas);
+		var roomId = datas.RoomId,recordUrlList = datas.RecordUrlList, LessonObid = datas.LessonObid;
+		var videoPageUrl = 'speakCourse/index.html';
+		var isInRoom = datas.isInRoom;
+		// window.location.href += '?openid=A0qSHN=='; 在此页面下获取openID传入录像页面
+		var openID = 'A0qSHN=='; 
+		if(isInRoom) {
+			recordBox.className = 'course-record';
+			recordUrlList.forEach( function(val, index) {
+				if(val.voice_url&&val.voice_url.trim().length>0){
+					addNewRecord(val);
+				}
+			});
+			lookVideo.forEach( function(element, index) {
+				this.onclick = function() {
+					var self = this;
+					window.location = 'speakCourse/index.html?record_obid=';
+				}	
+			});
+		}else{
+			document.querySelector('.bottom-btn').className = 'bottom-btn';
+		}
+		var moreBtn = document.querySelector('.preferential .more');
+		var moreP = document.querySelectorAll('.preferential .hide'),
+			length = moreP.length; 
+		var flP = document.querySelector('.preferential .fl-t');
+		try{
+			moreBtn.onclick = function(){
+				if(!this.flag){
+					flP.className = '';
+					moreP[length-1].className = 'fl-t';
+					moreP.forEach( function(element, index) {
+						element.style.display = 'block';
+					});	
+					this.innerText = '收起';
+				}else{
+					flP.className = 'fl-t';
+					moreP[length-1].className = '';
+					moreP.forEach( function(element, index) {
+						element.style.display = 'none';
+					});
+					this.innerText = '...展开更多'
+				}
+	
+				this.flag = !this.flag;
+			}
+		}catch(e){
+			console.log(e);
+		}
+
+		function addNewRecord(value) {
+			var newRecord = document.createElement('section');
+			newRecord.className = 'record';
+			var date = new Date(value.begin_time_stamp);
+			var month = date.getMonth()+1,
+				year = date.getFullYear(),
+				day = date.getDate(), 
+				hour = twoDigits(date.getHours()), 
+				min = twoDigits(date.getMinutes());
+			var week = '';
+			var pptUrl = value.ppt_url?value.ppt_url:'';
+			var jump_link = videoPageUrl+'?record_obid='+value.record_obid+'&voice_url='+value.voice_url+'&ppt_url='+pptUrl+'&roomId='+roomId+'&LessonObid='+LessonObid+'&openid='+openID;
+			switch (date.getDay()) {
+				case 0:
+					week = '周日';break;
+				case 1:
+					week = '周一';break;
+				case 2:
+					week = '周二';break;
+				case 3:
+					week = '周三';break;
+				case 4:
+					week = '周四';break;
+				case 5:
+					week = '周五';break;
+				case 6:
+					week = '周六';break;
+				default: week = ' ';break;
+			}
+
+			newRecord.innerHTML = '<p class="record-time">'+year+'.'+month+'.'+day+' '+week+' '+hour+':'+min+'</p><a href="'+jump_link+'" >查看录像</a>';
+			recordBox.append(newRecord);
+		}
+		function twoDigits(num){
+			return num>=10?num:'0'+num;
+		}
+	})();
+</script>
+</html>

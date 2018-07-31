@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas Demo</title>
+		<style>
+			body{
+				background-color: #bbb;
+			}
+			#canvas{
+				border: 1px solid #1F1F1F;
+				background-color: #FFFFFF;
+			}
+		</style>
+		<script src="js/tween.js"></script>
+		<script src="js/compatible.js"></script>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800">您的浏览器版本过低，不支持canvas</canvas>
+		<script>
+		    var canvas = document.getElementById("canvas");
+		    var ctx = canvas.getContext("2d"); 
+	        var sColor = 'rgb(0,188,200)';
+	        var eColor = 'rgb(0,28,100)';
+	        var radius = 25;  // 球半径
+			var time = 2000;  // 规定的运动时间
+			var lastCanvas = null;
+			// ballRadius =30, g = 9.8 , mocali = 0.5,balls = [],collarg = 0.8,pxpm = canvas.width/20; 
+			// 意思很明显：ballradius是球半径，g是重力加速度，mocali是空气阻力引起的水平方向的减速度，
+			// balls是一个用于存放小球对象的数组，collarg是弹力系数。pxpm是像素与米之间的映射，把画布当成是20米宽的区域
+			var Ball = function(x,y,r,sColor,eColor){
+					this.x = x;
+					this.y = y;
+					this.oldx = x;
+					this.oldy = y;
+					this.vx = 10;
+					this.vy = 10;
+					this.radius = r;
+					this.color = this.setColor(sColor,eColor);
+			}
+			Ball.prototype = {
+					setColor: function(sColor,eColor) {
+						if(!ctx){
+							alert('画布环境不存在');
+							return false;
+						}
+			  		var g1 = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);  
+			        g1.addColorStop(0.1, sColor );    
+			        g1.addColorStop(1, eColor); 
+			        return g1;
+					},
+					draw: function() {
+						if(!ctx){
+							alert('画布环境不存在');
+							return false;
+						}
+						ctx.fillStyle = this.color;  
+			        ctx.beginPath();  
+			        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);  
+			        ctx.closePath();  
+			        ctx.fill();  
+			        this.moving = false;
+					},
+					clear: function(x,y,w,h){
+						
+					}
+			    
+			};
+
+
+			var Question = function(name,answer_index,q_index) {
+				this.name = name;
+				this.answer_index = answer_index;
+				this.index = q_index;
+			}
+			var QuestionArr = [
+					{
+						name: 'A',
+						index: 0,
+						answer_index: 3
+					},
+					{
+						name: 'B',
+						index: 1,
+						answer_index: 1
+					},
+					{
+						name: 'C',
+						index: 2,
+						answer_index: 0
+					},
+					{
+						name: 'D',
+						index: 3,
+						answer_index: 2
+					},
+			];
+			var AnswerArr   = ['triangle','quadrangle','pentagon','sexangle'];
+			var answerLocation = [], questionLocation = [];
+			var fontSize = '24px',fontColor = 'black', fontFamily = 'Microsoft yahei';
+			setQuestion();
+			
+			setLocation();
+			function setQuestion() {
+					strokeRoundRect(ctx,50,50,100,500,10,1,'rgb(123,202,68)');
+					strokeRoundRect(ctx,550,50,180,500,10,1,'rgb(13,86,202)');
+					var lastY = 100,lastY1 = 100;
+					for(var i=0,length=QuestionArr.length;i<length;i++) {
+						var a_x = 560,a_y = lastY1,a_w = 160,a_h = 50 ,a_raduis = 5;
+						var q_x = 100,q_y = lastY, q_w = 50,q_h = 50, q_radius = 25;
+						var val = QuestionArr[i];
+						// 绘制问题文字区域
+						drawCircle(ctx,q_x,q_y,q_radius,'#cfe34a',true)
+						// 绘制问题文字
+						fillText(ctx,q_x-7.5,q_y+7.5,val.name,fontColor,fontSize,fontFamily);
+						// 绘制答案区域
+						fillRoundRect(ctx,a_x,a_y,a_w,a_h,a_raduis,'orange');
+						// 绘制答案文字
+						fillText(ctx,a_x+10,a_y+30,AnswerArr[i],'#fff',fontSize,fontFamily);
+						lastY += 120;
+						lastY1 += 120;
+					}
+					lastCanvas = ctx.getImageData(0,0,canvas.width,canvas.height); // 保存canvas背景
+			}
+			function setLocation() {
+				var lastY = 100,lastY1 = 100;
+					for(var i=0,length=QuestionArr.length;i<length;i++) {
+						var a_x = 560,a_y = lastY1,a_w = 160,a_h = 50 ,a_raduis = 5;
+						var q_x = 100,q_y = lastY, q_w = 50,q_h = 50, q_radius = 25;
+						var val = QuestionArr[i];
+						// 存储答案区域坐标
+						answerLocation.push({x:a_x,y:a_y,w:a_w,h:a_h});
+						// 存储问题区域坐标
+						questionLocation.push({x:q_x-q_radius,y:q_y-q_radius,w:q_w,h:q_h});
+						lastY += 120;
+						lastY1 += 120;
+					}
+				}
+				var latestClick = []; // 存储最近的两次单击信息
+				var lineGroup = [];
+				canvas.onclick = function (e) {
+				var x = e.pageX - this.offsetLeft;
+				var y = e.pageY - this.offsetTop;
+				if(latestClick.length<2){
+					var data = getClickRangeInfo(x,y);
+					if(data&&data.data.name){
+				    	latestClick.push({x:x,y:y,data:data.data,question_index:data.index});
+					}else if(data&&!data.data.name){
+						latestClick.push({x:x,y:y,data:data.data,index:data.index});
+					}
+					
+				}
+				if(latestClick.length==2) {
+					var start = judgeQuestionRange(latestClick[0].x,latestClick[0].y);
+					var end = judgeAnswerRange(latestClick[1].x,latestClick[1].y);
+					if(start&&end) {
+						var obj = {question:latestClick[0].data.answer_index,answer:latestClick[1].index,question_index:latestClick[0].question_index};
+						console.log(obj);
+						if(!LineGroupRepetition(obj)){
+							lineGroup.push(obj);
+				    		if(lineGroup.length<=QuestionArr.length){
+				        		// drawLine(latestClick[0],latestClick[1],'red',5);
+				        		ligature(latestClick[0],latestClick[1],1000);
+				        		animate();
+				    		}
+						}
+					}
+					latestClick = [];
+				}
+				if(lineGroup.length===AnswerArr.length){
+					var result = judgeAnswer(lineGroup);
+					var str = '答对'+result.rightNum+'题';
+					fillText(ctx,canvas.width-100,canvas.height-100,str,'red','24px',fontFamily);
+				}
+			}
+
+			function run(a,b) {
+			    var position = { x: a.x, y: a.y};
+			    var endPosition = {x: b.x, y: b.y};
+			    var position_old = { x: a.x, y:a.y};
+			    // new TWEEN.Tween( position ).to( { x: 175 }, 2000 ).easing( TWEEN.Easing.Back.InOut ).start();
+			  	new TWEEN.Tween( position ).to( endPosition, time ).easing( TWEEN.Easing.Back.InOut ).onUpdate( function () {
+			  		var ball = new Ball(position.x,position.y,radius,sColor,eColor);
+			  		clearBackground(ctx,0,0,canvas.width,canvas.height);
+			  		ctx.putImageData(lastCanvas,0,0);
+			  		ball.draw();
+			  		position_old.x = position.x;
+			  		position_old.y = position.y;
+			  	}).start();
+			}
+			function ligature(a,b,time) { // 连线动画
+				var position = { x: a.x, y: a.y};
+			    var endPosition = {x: b.x, y: b.y};
+			    var position_old = { x: a.x, y:a.y};
+			  	new TWEEN.Tween( position ).to( endPosition, time ).easing( TWEEN.Easing.Linear.None ).onUpdate( function () {
+					drawLine(position_old,position,'red',2);
+			  		position_old.x = position.x;
+			  		position_old.y = position.y;
+			  	}).start();
+			  	setTimeout(function(){
+			  		lastCanvas = ctx.getImageData(0,0,canvas.width,canvas.height); // 保存canvas背景
+			  		run(a,b);
+			  	}, time);
+			}
+			function animate(time) {
+				requestAnimationFrame( animate );
+				TWEEN.update(time);
+			}
+	      canvas.onmousedown = function (e) {
+	      	var self = this;
+	      	var x = e.pageX - this.offsetLeft;
+	        var y = e.pageY - this.offsetTop;
+	        if(judgeQuestionRange(x,y)||judgeAnswerRange(x,y)){
+	        	ctx.strokeStyle = 'red';
+	        	ctx.lineWidth = 5;
+	        	ctx.save();
+	        	ctx.beginPath();
+	        	ctx.moveTo(x,y);
+	        	self.onmousemove = function(e) {
+	        		var _x = e.pageX - this.offsetLeft;
+	        		var _y = e.pageY - this.offsetTop;
+	        		ctx.lineTo(_x,_y);
+	        		ctx.stroke();
+	        	}
+	        	document.onmouseup = function() {
+	        		self.onmousemove = null;
+	        		ctx.closePath();
+    				ctx.restore();
+	        	}
+	        }
+	      }
+	      function judgeAnswer(obj) {
+	      		var result = {};
+	      		var rightNum = 0;
+	      		var rightIndex = [];
+	      		obj.forEach( function(val, index) {
+	      			if(val.question===val.answer){
+	      				rightNum++;
+	      				rightIndex.push(index);
+	      			}
+	      		});
+	      		return {
+	      			rightNum,rightIndex
+	      		}
+	      }
+	      function LineGroupRepetition(obj){ // 检测是否有重复的线段组合
+	      		var result = false;
+	      		lineGroup.forEach( function(val, index) {
+	      			for(var key in val) {
+	      				if(val[key]==obj[key]){
+	      					result = true;
+	      				}
+	      			}
+	      		});
+	      		return result;
+	      }
+	      function getClickRangeInfo(x,y) {
+	      		var result = null;
+	      		questionLocation.forEach( function(val, index,array) {
+	      			if(x>=val.x&&x<=val.x+val.w&&y>=val.y&&y<=val.y+val.h) {
+	      				result = {data:QuestionArr[index],index:index};
+	      				return true;
+	      			}
+	      		});
+	      		answerLocation.forEach( function(val, index,array) {
+	      			if(x>=val.x&&x<=val.x+val.w&&y>=val.y&&y<=val.y+val.h) {
+	      				result = {data:AnswerArr[index],index:index};
+	      				return true;
+	      			}
+	      		});
+	      		return result;
+	      }
+		  function judgeQuestionRange(x,y) { // 判定鼠标单击范围，是否在问题区域
+		  		return questionLocation.some(function(val,index,array){
+				  		  	var result = x>=val.x&&x<=val.x+val.w&&y>=val.y&&y<=val.y+val.h;
+				  		  	return result?true:false;
+				  		}) ;
+		  }
+		  function judgeAnswerRange(x,y) {  // 判定鼠标单击范围，是否在答案区域
+		  	return answerLocation.some(function(val,index,array){
+			  		  	var result = x>=val.x&&x<=val.x+val.w&&y>=val.y&&y<=val.y+val.h;
+			  		  	return result?true:false;
+		  		 	}) ;
+		  }
+		  function drawLine(a,b,c,w) { // 绘制直线	
+		  		if(!a||!b){ return false};  		
+		  		ctx.strokeStyle = c||'#000';
+		  		ctx.beginPath();
+		  		ctx.moveTo(a.x,a.y);
+		  		ctx.lineTo(b.x,b.y);
+		  		ctx.lineWidth = w||1;
+		  		ctx.closePath();
+		  		ctx.stroke();
+		  }
+ 		  function drawCircle(cxt,x,y,r,c,isSolid,w){ // 圆心坐标，半径，颜色，实心/空心,线宽
+		    	cxt.beginPath();
+				cxt.arc(x,y,r,0,360,false);
+				c=c||'#000';
+				if(!isSolid){
+					cxt.lineWidth=w||1;
+					cxt.strokeStyle=c;
+					cxt.stroke();
+				}else{
+					cxt.fillStyle=c;
+					cxt.fill();
+				}
+				cxt.closePath();
+		    }
+		  function fillText(cxt,x,y,text,color,size,family){ // canvas环境 x坐标 y坐标 文本值 文本颜色 文本尺寸 文本字体
+		  		cxt.font = size+ ' ' + family;
+				cxt.fillStyle = color||'#000';
+				cxt.fillText(text,x , y );
+		  }
+		  function strokeText(cxt,x,y,text,color,size,family) { // canvas环境 x坐标 y坐标 文本值 文本颜色 文本尺寸 文本字体
+			  	cxt.font = size+ ' ' + family;
+				cxt.strokeStyle = color|| '#000';
+				cxt.strokeText(text,x , y );
+		  }
+		  function strokeRoundRect(cxt,x,y,width,height,radius,/*optional*/lineWidth,/*optional*/strokeColor){ 
+			    //圆的直径必然要小于矩形的宽高          
+			    if(2*radius>width || 2*radius>height){return false;}  
+			    cxt.save();  
+			    cxt.translate(x,y);  
+			    //绘制圆角矩形的各个边  
+			    drawRoundRectPath(cxt,width,height,radius);  
+			    cxt.lineWidth = lineWidth||2;//若是给定了值就用给定的值否则给予默认值2  
+			    cxt.strokeStyle=strokeColor||"#000";  
+			    cxt.stroke();  
+			    cxt.restore();  
+			}  
+			function fillRoundRect(cxt,x,y,width,height,radius,fillColor){  
+			    //圆的直径必然要小于矩形的宽高          
+			    if(2*radius>width || 2*radius>height){return false;}  
+			    cxt.save();  
+			    cxt.translate(x,y);  
+			    //绘制圆角矩形的各个边  
+			    drawRoundRectPath(cxt,width,height,radius);  
+			    cxt.fillStyle=fillColor||"#000";//若是给定了值就用给定的值否则给予默认值  
+			    cxt.fill();  
+			    cxt.restore();  
+			}  
+		  	function drawRoundRectPath(cxt,width,height,radius){  
+			    cxt.beginPath(0);  
+			    //从右下角顺时针绘制，弧度从0到1/2PI  
+			    cxt.arc(width-radius,height-radius,radius,0,Math.PI/2);  
+			    //矩形下边线  
+			    cxt.lineTo(radius,height);  
+			    //左下角圆弧，弧度从1/2PI到PI  
+			    cxt.arc(radius,height-radius,radius,Math.PI/2,Math.PI);  
+			    //矩形左边线  
+			    cxt.lineTo(0,radius);  
+			    //左上角圆弧，弧度从PI到3/2PI  
+			    cxt.arc(radius,radius,radius,Math.PI,Math.PI*3/2);  
+			    //上边线  
+			    cxt.lineTo(width-radius,0);  
+			    //右上角圆弧  
+			    cxt.arc(width-radius,radius,radius,Math.PI*3/2,Math.PI*2); 
+			    //右边线  
+			    cxt.lineTo(width,height-radius);  
+			    cxt.closePath();  
+			}  
+			function clearBackground(ctx,x, y, w, h) {
+				// 保存当前渲染上下文所进行的变换
+				ctx.save();
+				// 重置渲染上下文并清空画布
+				ctx.setTransform(1, 0, 0, 1, 0, 0);
+				ctx.clearRect(x, y, w, h);
+				// 恢复先前渲染上下文所进行的变换
+				ctx.restore();
+			}
+		</script>
+	</body>
+</html>

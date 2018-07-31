@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="mobile_files/jquery.mobile.min.css" /><link rel="stylesheet" href="mobile_files/mobile_userinfo.css" />
+	<style></style>
+	<script type="text/javascript" src="mobile_files/jquery.min.js"></script>
+	<script type="text/javascript" src="mobile_files/jquery.mobile.min.js"></script>
+	<!-- <script type="text/javascript" src="/htmanager/Public/jquery/jquery.mobile.tabs.js"></script>
+	 -->
+	<script type="text/javascript" src="mobile_files/data.js"></script>
+	<script type="text/javascript" src="mobile_files/ht_base_inc.js"></script>
+	<script type="text/javascript" src="mobile_files/ht_opreation_func.js"></script>
+	<script type="text/javascript" src="mobile_files/jquery-powerFloat.js"></script>
+	<script type="text/javascript" src="mobile_files/ht_friendnuminfo.js"></script>
+	<style>
+		.hide{
+			display:none;
+		}
+	</style>
+</head>
+</html>
+<body>
+	<div data-role="page" class="jqm-demos" data-quicklinks="true" data-disable-page-zoom=false>
+		<div data-role="header" id='header'></div>
+		<div data-demo-html="true">
+			<div data-role="tabs" id="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#tab-1" class="" data-ajax="false">个人信息</a>
+						</li>
+						<li>
+							<a href="#tab-2" class="" data-ajax="false">操作</a>
+						</li>
+					</ul>
+				</div><!-- navbar -->
+				<div id="tab-1" class="user-content">
+					<textarea id="userTemp" style="display:none">
+						<ul data-role="listview" data-theme="b" class="userbox" id="$USERID$"  >
+						<li>
+							<img src="https://ht-head.oss-cn-shenzhen.aliyuncs.com/$HEADURL$"  date-inline="true">
+							<div id="USERID"   >
+								<span style="color:$JIDCOLOR$">JID：</span>$USERID$</div>
+								<div  >Sex：$SEX$</div>
+								<div  >Age：$AGE$</div>
+							</li>
+							<li>						
+								<div>ID：$USERNAME$</div>
+								<div>昵称：$NICKNAME$</div>
+								<div> $EMAIL$</div>
+								<div>已注册<b class="yellow">$REGTIMEDAY$</b>  ：$REGTIME$</div>
+								<div >母语：<span style="color: rgb(1, 89, 49);font-weight: 900;" >$NATIVELANG$[$ALLOWCOUNT$]</span>
+									<span class="$MORETEACHLANG$">$TEACHLANG2$, $TEACHLANG3$ </span></div>
+								<div>学习：$LEARNLANG1$ : $SKILLLEVEL1$，
+									<span class="$MORELEARNLANG$">$LEARNLANG2$，$LEARNLANG3$ </span>
+								</div>
+							</li>
+							<li>
+								<h3>设备信息：</h3>
+								<div class="TERMINALTYPE" > $TERMINALTYPE$</div><div class="JAILBREAK" > $JAILBREAK$</div>
+								<div> $DEVICEDETAIL$  - 系统版本:$OSVERSION$</div>
+								<div> 客户端版本: $VERSION$  - Oslang: $OSLANG$   </div>
+								<div>$ALERT_MSG$</div>
+								<br>
+								<div class="DEVICEID" style="display:none"> DEVICEID: $DEVICEID$  </div>
+							</li>
+
+							<li><!-- 条件统一的图标区域-->
+								<div class="MGSTATE" style="white-space: normal;">$MGSTATE$</div>
+								<div>$SHOWTIME$</div>
+								<div class='icon_area'></div>
+								<div class='icon_area_des'  ></div>
+							</li>
+							<li>
+								<div>国籍：$NATIONALITY$</div>
+								<div><b class="yellow">$ALLOWED$</b></div>
+								<div>地区：$COUNTRY$</div>
+								<div>CITY： $CITY$</div>
+								<div class="more_info"></div>
+							</li>
+							<li>
+								<div class="friendinfoTrigger" style="text-shadow:0 0px;font-weight:normal; font-size:10px;  color: black; "></div>
+							</li>
+						</ul><!-- userbox-->
+					</textarea>
+				</div><!-- tab-1 -->
+				<div id="tab-2" data-role="listview" class="operation_panel" >
+					<input type="hiden" class="tempinfo" state=""   style="display:none" value="" />
+					<div class="client_op unit ui-field-contain" data-theme="a"   >
+						<label>客户端操作</label>
+						<select class="behavior" data-native-menu="false" id="client_controller"></select>
+					</div><!-- client_op -->
+					<div   class="ui-field-contain unit recover "  data-theme="a"   data-inline="true">
+						<label>用户行为禁止选项</label>
+						<select class="behavior" data-native-menu="false"   id="behavior_controller"></select>
+					</div>
+					<!-- recover -->
+					<!--标记处理-->
+					<div class="unit setstate ui-field-contain " data-theme="a"  >
+						<label>标记：</label>
+						<select  data-native-menu="false"   class="markreasonselect reasonlist" takefrom="markreasonselect" state="mark"></select>
+						<input type="text"  class="textInput markreasoninput">
+						<input type="button"  state="mark" data-theme="a" takefrom="markreasoninput,markreasonselect" class="markreasonok" value="标记">
+					</div><!--标记处理--><!--隐藏处理阶段-->
+					<div  class="unit setstate ui-field-contain"   data-theme="e" data-inline="true">
+						<label>隐藏：</label>
+						<select  data-native-menu="false"  class="hidereasonselect reasonlist" takefrom="hidereasonselect" state="hide"></select>
+						<input type="text"   class="hidereasoninput textInput">
+						<input type="button" class="btnsetreason hidebtn" data-theme="z" takefrom="hidereasoninput,hidereasonselect" state="hide" value="隐藏">
+					</div><!--隐藏处理阶段--><hr><!--删除处理阶段-->
+					<div class="unit setstate ui-field-contain"  data-theme="y"   data-inline="true" >
+						<label>删除：</label>
+						<select  data-native-menu="false"  class="deletereasonselect reasonlist" takefrom="deletereasonselect" state="delete"></select>
+						<input type="text"  class="textInput deletereasoninput">
+						<input type="button"  class="deletereasonok" data-theme="x" takefrom="deletereasoninput,deletereasonselect" state="delete" value="删除" >
+					</div><!--删除处理阶段--><hr><hr>
+					<div class="unit ophideshow">
+						<input type="button" class="oprecoverbtn" data-theme="y"  style="margin-left:100px;color: green;visibility: visible;" value="恢复该用户">
+						<button class="behaviorbtn" value="REGISTER_BAN"  	param="type=REGISTER_BAN" 	action="userController" behavior="registerBan" style="color: blue;"   >禁注册 </button>
+						<button class="behaviorbtn" value="buy"  	param="behavior=unblock&type=buy"	action="userController"		behavior="behavior" >禁购买 </button>
+						<div class="hide_area"  >
+							<div class="gift_content">
+								<div  class="gift_send_area" style="">
+									<input class="comment" type="text" value="注释" >						 天数:
+									<input class="giftdayinput" type="text" value="0"  >
+									<div class="ui-field-contain">
+										<select class="giftdayselect" id="giftno"   data-native-menu="false"   >
+											<option value="">增送时长</option>
+											<option value="3">3天</option>
+											<option value="7">7天</option>
+											<option value="30">1个月</option>
+											<option value="60">2个月</option>
+											<option value="90">3个月</option>
+											<option value="365">1年</option>
+										</select>
+									</div>
+									<input type="button" id="sendgift_btn" class="sendgift" value="增送"><br>
+									<input type="button" class="opdeleteselfbtn" data-inline="true" value="用户删除自己" style="color: green;visibility: visible;">
+									<input type="button" id="setheadurl_btn" data-inline="true" class="setheadurl" value="默认头像">
+									<input type="button" id="send_multilang_btn" data-inline="true" value="赠送多语言" style="color:#3C7FB1;;visibility: visible;" />
+								</div>
+							</div>
+						</div><!--hide_area-->
+					</div><!--ophideshow-->
+					<div class="unit"><!-- 返回信息的部分-->
+						<div class="retinfo" style="color:red;font-weight:bold;font-size:13px;"></div>
+					</div>
+				</div><!-- tab-2 -->
+			</div><!-- tabs -->
+		</div><!-- /data-demo-html= -->
+		<div data-role="footer" data-id="foo1" data-position="fixed">
+			<div data-role="navbar"></div>
+		</div><!-- footer -->
+	</div><!-- data-role="page"  -->
+</body>
+<script>
+	
+	var navTab				=	{getCurrentPanel:function(){}};
+	var change_device 		= 	function(Page){};
+	var htalert				=	function(str,timeout,type){alert(str)};
+	
+	var jsoncallback		=	function(data){ 
+		if(data && data.cb){
+			eval(data.cb) 
+		} 
+		if(data && data.more_info){ 
+			$('.more_info').append(data.more_info)  
+		}
+	};
+	
+	;(function(){
+	  
+	MOB_APP		=	'https://station3.hellotalk.org/mobile_manager/mobile/';  
+	APP_NAME	=	MOB_APP+'proxy/';  
+	var verify	=	0;
+	var alertC	=	0; 
+	 
+
+		
+		
+	var patchReason= function(reasonData,client_str,behavior_str){
+				 if(verify != 1){
+					  alertC || alert('验证没通过');
+					  return;
+				}
+		 
+				if(!reasonData)return;
+				
+				var select_str	=	'',
+				reasonCount	=	reasonData.length;
+				console.log(reasonData);
+				if(reasonCount){
+				
+					for(var i = 0 ; i<reasonCount;i++){
+						select_str	+=	'<option value="'+reasonData[i]+'">'+reasonData[i]+'</option>';
+					}
+					
+				}else{
+				
+					for(var k in reasonData){
+						select_str	+=	'<optgroup label="'+k+'">'
+						for(var i = 0 ; i < reasonData[k].length;i++){
+							select_str	+=	'<option value="'+reasonData[k][i]+'">'+reasonData[k][i]+'</option>';
+						}
+						select_str	+=	'</optgroup>' 
+					}
+				}
+				$('select.reasonlist').each(function(){
+					   $(this).html(select_str);
+				});	
+
+				
+				if(client_str) $('#client_controller').html(client_str);
+				if(behavior_str) $('#behavior_controller').html(behavior_str);
+				
+				setTimeout(function(){},300)
+				$("#tab-2").trigger("create");
+				$('select.reasonlist').selectmenu('refresh');
+				$('#behavior_controller').selectmenu('refresh');
+				$('#client_controller').selectmenu('refresh');
+					
+					 
+				
+		 
+		}
+		
+		
+	  
+	 		 
+	  $('.tempinfo').attr('userid',$.urlGet('userid',0) );
+	  
+ 
+	  
+	  MG_IMG_URL		=	'https://www.hellotalk.com/htmanager/Public/Images/';
+	  
+	  var alertMsg	=	{confirm:function(str,option){ 
+		  if(confirm(str)){
+		  if(option.okCall){
+		  option.okCall();
+		  }
+		  }
+				
+		  }
+	  };
+	  
+	  //用户信息模板
+	  var PatchPage	=	function(userid,page){
+	  
+			  var Temp	=	$('#userTemp').val();
+			  // user-content
+			  var OldCount 	=	HT['handle_count_info']  ;
+			  HT['handle_count_info'] = function(data,obj){
+
+					OldCount(data,obj);
+					$("#tab-1").trigger("create");
+					$("#tab-1 ul").listview('refresh');
+			  }
+			  
+			  
+			  HT['handle_base'] = function(data,obj){
+					var dt = new Date();
+					console.log('handle_base');
+					console.log(data);
+					for(var key in data){
+						  var thisUser			=	data[key];
+			  			thisUser['NATIVELANG']	=	LANGCODE_ch[thisUser['NATIVELANG']];
+			  			thisUser['LEARNLANG1']	=	LANGCODE_ch[thisUser['LEARNLANG1']];
+			  			thisUser['JIDCOLOR']	=	'white';
+			  			thisUser['AGE']			=	getAge(thisUser.BIRTHDAY);
+			  			thisUser['SEX']			=	thisUser['SEX']==1?'男':'女';
+			  			thisUser['ALLOWED']		=	thisUser['ALLOWED']!=1?'禁止定位':'';
+			  			thisUser['TERMINALTYPE']=	thisUser['TERMINALTYPE']==1?'安卓':'iOS';
+			  			thisUser['JAILBREAK']	=	thisUser['JAILBREAK']==1?'<b style="color:red">越狱</b>':'';
+			  			thisUser['SHOWTIME']	=	thisUser['SHOWTIME']?'['+thisUser['SHOWTIME'].str_timezone(8,'YY年MM月dd日-HH:mm')+']':'';
+			  			thisUser['REGTIMEDAY']	=	HT.time_ago(thisUser['REGTIME'],8);
+			  			
+			  			
+			  			if( parseInt(dt.getTime()/1000) - dt.strtotime(thisUser['REGTIME']) < 80*3600){
+			  			thisUser['JIDCOLOR']	=	'blue';
+			  			
+			  			}
+			  			var langArr = {'TEACHLANG2':'TEACHSKILLLEVEL2','TEACHLANG3':'TEACHSKILLLEVEL3','LEARNLANG2':'SKILLLEVEL2','LEARNLANG3':'SKILLLEVEL3'};
+			  			for(var key in langArr){
+			  			
+			  			thisUser[key]	=	thisUser[key] >0 ? 	LANGCODE_ch[thisUser[key]] + ':'+thisUser[langArr[key]] : '';
+			  			}
+			  			
+			  			thisUser['MORETEACHLANG']	=	( thisUser['TEACHLANG2'] || thisUser['TEACHLANG3'] ) ? '' : 'hide';
+			  			thisUser['MORELEARNLANG']	=	( thisUser['LEARNLANG2'] || thisUser['LEARNLANG3'] ) ? '' : 'hide';
+			  			
+			  			
+			  			thisUser['REGTIME']		=	thisUser['REGTIME'].str_timezone(8,'YY年MM月dd日-HH:mm');
+			  			
+			  			thisUser['MGSTATE']		=	thisUser['REASON']?'<b style="color:red">'+ thisUser['MGSTATE']+'：'+thisUser['REASON']+'</b>':'';
+			  			//推送状态
+			  			// console.log('thisUser');
+			  			// console.log(thisUser);
+			  			//html 模板装订
+			  			var html				=		Temp.temp(thisUser);
+			  			// console.log(html);
+			  			page.append(html);
+					}
+					// 更多信息，关注用户。。。
+					$.ajax({ 
+						url:  MOB_APP+'more_info/1',
+					   type: "GET",
+					   dataType: 'jsonp',
+					   jsonp: 'jsoncallback',
+					   data: window.location.href.split("?")[1],
+					   timeout: 5000,
+					   beforeSend: function(){
+					   
+					   },
+					   success:function(json){
+					   	console.log('aa:');
+					   	console.log(json);
+							jsoncallback(json)
+					   },
+					})
+			  }
+			  
+			  HT.startPatch(
+							{userid:userid,
+							table:'base,account,block_state,device,state,buy_trans,lang,location,setting,user_state,count_info,device_status',
+							page:page,
+							callback:function(){
+							
+							$('.friendinfoTrigger').append('<div class="friend_num_info" style="top: 0px; left: 0px; z-index: 999; width: 260px;border-style: solid; border-color: RGB(89,148,230);display:none"> <div> <table class="list" width="100%" > <thead style="position: relative;"> <tr> 	<td colspan=7 class="titleinfo">计数</td> </tr> <tr><td>好友计数</td><td>总数</td><td>14天</td><td>30天</td><td>聊天计数</td><td>发出</td><td>接收</td> </tr>		 </thead> <tbody> </tbody>	 	</table> </div> </div>');
+							setTimeout(function(){
+									   ddd = Trigger_friendnuminfo.bind($('.friendinfoTrigger')[0]);
+									   ddd();
+									   $('.friendinfoTrigger .friend_num_info').show();	
+									   },1000);
+							
+							
+							}}); 
+	  }
+	  
+	  	 var initPage = function(){
+					 
+					 OpCenter.hideAfterHandle	=false ;
+					 OpCenter.setPage($('.operation_panel')[0]);
+					 var $thisPage 	=$('.user-content');
+					 var  userid = $.urlGet('userid',0);
+					 if(userid==0){
+						alert('wrong userid '+userid);
+						return;
+					 }
+					 navTab.getCurrentPanel		=	function(){
+						return  $thisPage;
+					 } ;
+					 setTimeout(function(){
+					 if($.urlGet('option')=='1'){
+						$('#ui-id-2').trigger('click');
+					 }
+					 },00);
+					 PatchPage(userid,$thisPage);
+					 log('over');
+		} 
+		$.ajax({
+				 type: "post",
+				 url:  APP_NAME+'mobile/check',
+				 data: window.location.href.split("?")[1], 
+				 success: function(data){
+					 initPage();	
+					 if(data && data.status==1){
+						verify=1;
+						console.log('data:');
+						console.log(data);
+						patchReason(data.reason,data.client_option,data.behavior_option);
+						if(data.app_host){
+							APP_NAME = data.app_host;
+						}
+					 }else{
+						if(data && data.info){
+						 alertC = 1;
+						 alert(data.info);
+						}
+					 } 
+				 }
+		});
+	  
+	  })();
+	</script>
+</html>

@@ -1,0 +1,943 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<link rel="icon" href="//ht-head.oss-cn-shenzhen.aliyuncs.com//pub/img/favicon.ico" type="image/x-icon" /> 
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>好的相聚 </title>
+		<link rel="stylesheet" href="//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/css/dropload.css">
+		<link rel="stylesheet" href="//ht-blog.oss-cn-hongkong.aliyuncs.com/static/flag/emojione-sprite-64.css">
+		<script src="//ht-blog.oss-cn-hongkong.aliyuncs.com/static/flag/flag_source.js"></script>
+		<script src="//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/js/zepto.min.js"></script>	
+		<script src="//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/js/dropload.js"></script>
+
+		<script>var html = document.querySelector('html');var width = Math.min(html.getBoundingClientRect().width,750);html.style.fontSize = width / 10 + 'px';</script>
+		<style type="text/css">
+			*{margin:0;padding:0;border:none;text-decoration: none;-webkit-tap-highlight-color: transparent;}html,body{width:100%;-webkit-overflow-scrolling: touch;}img{max-width:100%;}
+			html{
+				font-size: 100px;
+				-webkit-overflow-scrolling: touch;
+				height: 100%;
+				overflow: hidden;
+			}
+			body{	
+				position: relative;
+				font-family: PingFangSc,SFUIText;
+				font-size: 0.4266666666666667rem;
+				background-color: #f7f7fb;
+				height: 100%;
+			}
+			img{
+				vertical-align: middle;
+			}
+			.courseDetail {
+			  width: 100%;
+			  margin: auto;
+			  height: 100%;
+			  overflow-x: hidden;
+			  background-color: #f7f7fb;
+			  overflow-y: auto;
+
+			}
+			.voice {
+			  position: relative;
+			  top: 0;
+			  left: 0;
+			  width: 100%;
+			  height: 5.6rem;
+			  overflow: hidden;
+			  background-color: #000;
+			  z-index: 999;
+			  user-select: none;
+			  -webkit-user-select: none;
+			}
+			.shadow,.ppt,#notSupport{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				z-index: 9999;
+			}
+			#notSupport{
+				color: red;
+			    text-align: center;
+			    padding-top: 25%;
+			    background: #000;
+			    box-sizing: border-box
+			}
+			.ppt{z-index: 999;text-align: center;}
+			.ppt > img{
+				width: auto;max-height: 100%;
+				position: absolute;
+    			top: 50%;
+   				left: 50%;
+    			transform: translate(-50%,-50%);
+    		}
+			.voice .wrap{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+				overflow: hidden;
+				z-index: 99999;
+			}
+			.top-menu {
+			  position: relative;
+			  width: 100%;
+			  height: 0.6666666666666666rem;
+			  background-color: rgba(0,0,0,0.5);
+			}
+			.top-menu .back {
+			  position: absolute;
+			  top: 0;
+			  left: 5%;
+			  width: 0.6666666666666666rem;
+			  height: 0.6666666666666666rem;
+			}
+			.top-menu .title {
+			  width: 100%;
+			  text-align: center;
+			  font-family: SFUIText;
+			  font-size: 0.48rem;
+			  font-weight: 600;
+			  color: #ffffff;
+			  user-select: none;
+			  -webkit-user-select: none;
+			}
+			.loading {
+			  position: absolute;
+			  top: 50%;
+			  width: 100%;
+			  margin-top: -0.10666666666666667rem;
+			  line-height: 0.21333333333333335rem;
+			  text-align: center;
+			}
+			.loading .dot {
+			  display: inline-block;
+			  width: 0.21333333333333335rem;
+			  height: 0.21333333333333335rem;
+			  margin-left: 0.16rem;
+			  border-radius: 50%;
+			  opacity: 0.3;
+			  background-color: #ffffff;
+			  vertical-align: middle;
+			}
+			.loading .on {opacity: 1;}
+			.play-error {
+			  position: absolute;
+			  width: 100%;
+			  top: 50%;
+			  margin-top: -0.5466666666666666rem;
+			  line-height: 1.0933333333333333rem;
+			  text-align: center;
+			}
+			.play-error .error-pic {
+			  display: inline-block;
+			  width: 1.0933333333333333rem;
+			  height: 1.0933333333333333rem;
+			  background: url(//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/ic-chat-fail-normal.svg) no-repeat center/cover;
+			
+			}
+			.play-error .error-text {
+			  display: inline-block;
+			  width: 100%;
+			  color: #7e7e7e;
+			}
+			 
+			.bottom-controls {
+			  position: absolute;
+			  bottom: 0;
+			  left: 0;
+			  width: 100%;
+			  height: 0.7466666666666667rem;
+			  overflow: hidden;
+			  padding-left:2%;
+			  background-color: rgba(0,0,0,0.5);
+			}
+			.bottom-controls .btn {
+			  display: block;
+			  float: left;
+			  width: 0.7466666666666667rem;
+			  height: 0.7466666666666667rem;
+			  cursor: pointer;
+			}
+			.bottom-controls .play {
+			  background: url(//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/ic-chat-pause-normal.svg) no-repeat center/cover;
+			}
+			.bottom-controls .pause {
+			  background: url(//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/ic-chat-play-normal.svg) no-repeat center/cover;
+			}
+			.bottom-controls .progress-bar {
+			  float: left;
+			  width: 58%;
+			  height: 100%;
+			  margin-left: 10px;
+			  line-height: 0.7466666666666667rem;
+			}
+			.bottom-controls .play-time,.bottom-controls .duration{
+				display: block;
+				width: 13%;
+				height: 100%;
+				line-height: 0.7466666666666667rem;
+				float: left;
+				font-family: SFUIText;
+				font-size: 0.32rem;
+				text-align: center;
+				color: #ffffff;
+				user-select: none;
+			  -webkit-user-select: none;
+			}
+			.bottom-controls .duration{
+				float: left;
+				margin-left: 8px;
+
+			}
+			.progress-bar .progress-wrap{
+				position: relative;
+				float: left;
+				width: 100%;
+				height:  0.05333333333333334rem;
+				margin-top: 0.32rem;
+		  		border-radius: 0.08rem;
+				background-color: rgba(255,255,255,.3) ;
+			}
+			.progress-wrap .progress{
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 0;
+				background: #FFFFFF;
+			}
+			.progress:after{
+				content: '';
+				position: absolute;
+				right: -0.14666666666666667rem;
+		 		top: -0.12rem;
+			    display: block;
+			    width: 0.29333333333333333rem;
+			    height: 0.29333333333333333rem;
+				border-radius: 50%;
+				background: #FFFFFF;
+			}
+			.full-screen{
+				display: none;
+				float: left;
+				width: 0.7466666666666667rem;
+		  		height: 0.7466666666666667rem;
+				background: url(//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/ic-chat-maximize-normal.svg) no-repeat center/cover;
+				cursor: pointer;
+			}
+			.bottom-controls .fullScreenBar{
+				width: 90%;
+			} 
+			.bottom-controls .progress-bar .fullScreenWrap{
+				width: 53%;
+			}
+			 
+			.schooltime {
+			  width: 100%;
+			  height: 1.0666666666666667rem;
+			  background-color: #fff;
+			  padding: 0 0.32rem;
+			  line-height: 1.0666666666666667rem;
+			  user-select: none;
+			  -webkit-user-select:none;
+			}
+			.schooltime .icon-time {
+			  display: inline-block;
+			  width: 0.4266666666666667rem;
+			  height: 0.4266666666666667rem;
+			  background: url(//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/ic-particulars-time-normal.svg) no-repeat center/cover;
+			  vertical-align: middle;
+			}
+			.schooltime .text {
+			  color: #484848;
+			  font-size: 12px;
+			}
+			 
+			.content {
+			  width: 100%;
+			  height: auto;
+			  padding-bottom: 1.32rem;
+			}
+			.content:after{
+				display: block;
+				content: '';
+				clear: both;
+				overflow: hidden;
+			}
+			.content .share-topic {
+			  margin: 15px 0 0 0.32rem;
+			  width: 9.2rem;
+			  height: 2.533333333333333rem;
+			  border-radius: 0.16rem;
+			  background-color: #ffffff;
+			  border: solid 1px rgba(0, 0, 0, 0.18);
+			  padding: 0.26666666666666666rem;
+			  box-sizing: border-box;
+			  margin-bottom: 0.13333333333333333rem;
+
+			}
+			.share-topic .pic {
+			  display: block;
+			  float: left;
+			  width: 2rem;
+			  height: 2rem;
+			  overflow: hidden;
+			}
+			.share-topic .pic > img {
+			  width: 100%;
+			  height: 100%;
+			}
+			.share-topic .text {
+			  float: left;
+			  margin-left: 0.3333333333333333rem;
+			  width: 6.266666666666667rem;
+			  height: 100%;
+			}
+			.share-topic .text .title {
+			  display: block;
+			  font-size: 0.4266666666666667rem;
+			  font-weight: 500;
+			  line-height: 1.19;
+			  text-align: left;
+			  color: #484848;
+
+			}
+			.share-topic .text .introduce {
+			  display: block;
+			  font-size: 0.37333333333333335rem;
+			  line-height: 1.21;
+			  letter-spacing: -0.005333333333333334rem;
+			  font-family: PingFangSC,SFUIText;
+			  text-align: left;
+			  color: #7e7e7e;
+			  height: 0.9066666666666666rem;
+			  text-overflow: ellipsis;
+			  overflow: hidden;
+			  white-space: nowrap;
+			}
+			.content .teacher,.content .student {
+			  margin-top: 0.18666666666666668rem;
+			}
+			.content .teacher {
+			  width: 100%;
+			  float: left;
+			  padding: 0 0.32rem;
+			  box-sizing: border-box;
+			}
+			.content .student {
+			  width: 100%;
+			  float: right;
+			  padding: 0 0.32rem;
+			  box-sizing: border-box;
+			  position: relative;
+			}
+			.content .nickname {
+			  line-height: 0.4rem;
+			  margin-bottom: 0.12rem;
+			  font-size: 0.32rem;
+			  color: #7e7e7e;
+			  width: calc(100% - 1.7333333333333334rem);
+		      text-overflow: ellipsis;
+		      overflow: hidden;
+		      white-space: nowrap;
+			}
+			.teacher .nickname {
+			  margin-left: 1.7333333333333334rem;
+			}
+			.student .nickname {
+			  text-align: right;
+			  margin-right: 1.7333333333333334rem;
+			}
+			.content .user-pic {
+			  display: block;
+			  position: relative;
+			  width: 1.0666666666666667rem;
+			  height: 1.0666666666666667rem;
+			}
+			.user-pic .flag {
+			  position: absolute;
+			    bottom: -5px;
+			    transform: scale(.20,.20);
+			  border-radius: 50%;
+			}
+			.teacher .user-pic .flag {
+			  left: 0;
+			}
+			.student .user-pic .flag {
+			  left: 0;
+			}
+			.teacher .user-pic {
+			  float: left;
+			}
+			.student .user-pic {
+			  float: right;
+			}
+			.user-pic > img {
+			  border-radius: 50%;
+			}
+			.teacher .message {
+			  float: left;
+			  margin-left: 0.3466666666666667rem;border: solid 1px rgba(0, 0, 0, 0.18);
+			}
+			.student .message {
+			  float: right;
+			  margin-right: 0.3466666666666667rem;
+			  border: solid 1px rgba(0, 0, 0, 0.18);
+			}
+			.me .message { background-color: #dbebff;}
+			.other .message { background-color: #ffffff;}
+			.content .message {
+			  max-width: 4.346666666666667rem;
+			  color: #333;
+			  border-radius: 0.58rem;
+			  padding: 8px 0.48rem;
+			}
+			.hide {
+			  display: none;
+			}
+			.fl-t {
+			  float: left;
+			}
+			.container{
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: calc(100% - 5.6rem);
+				overflow-y: scroll;
+				overflow-x: hidden; 
+			}
+		</style>
+	</head>
+	<body>
+		<section class="courseDetail">
+			
+			<section class="voice">
+				<section class="shadow"></section>
+				<section class="ppt">
+					<img src="" alt="" />
+				</section>
+				<section id="notSupport" class="hide"></section>
+				<audio width="100%" height="100%" preload="metadata"  src=""></audio>
+				<section class="wrap">
+					<p class="loading hide"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></p>
+					<p class="play-error hide">
+						<span class="error-pic"></span>
+						<span class="error-text"></span>
+					</p>
+					<section class="bottom-controls">
+						<span class="btn pause"></span>
+						<span class="play-time">00:00</span>
+						<section class="progress-bar">
+							<section class="progress-wrap">
+								<p class="progress"></p>
+							</section>
+						</section>
+						<span class="duration">00:00</span>
+						
+					</section>
+				</section>
+			</section>
+			
+			<section class="container">
+				<section class="schooltime">
+					<span class="icon-time"></span>
+					<span class="text">上课时间 ：</span>
+				</section>
+				<section class="content">
+					<aside class="share-topic">
+						<span class="pic"><img src="" alt="" /></span>
+						<p class="text">
+							<span class="title"></span>
+							<span class="introduce"></span>
+						</p>
+					</aside>
+					<section class="lists">
+							
+					</section>
+					
+				</section>
+			</section>
+			
+		<script>
+		 
+		document.addEventListener('visibilitychange',function(){
+			document.querySelector('.voice audio').pause();
+		})
+		document.querySelector('.container').addEventListener('dblclick',function(e){
+			e.preventDefault();
+		})
+		document.querySelector('.wrap').onclick = function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			return;
+		}
+		document.querySelector('.voice').addEventListener('touchmove',function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			return;
+		})
+		document.querySelector('.container').addEventListener('touchmove',function(e){
+			e.stopPropagation();
+		})
+
+		window.onload = function() {
+			var ppt_url = "ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/18969/m_4894588f735da1a6c942631a84a93186.txt",
+				voice_url = "ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/18969/m_25aa3105632b854e780a6727061b7271.mp3",
+				begin_time_stamp = "",
+				room_id = "24qjZWJEH4pD",
+				record_obid = "5b4c473e372cbf1a8ba1f74e",
+				teacher_openid = "24qVnMrEH4pD",
+				openid = "24qVnMrEH4pD",
+				adminList = ["","24Hyp5rEH4pD","24qVnMrEH4pD"],
+				frontEndConfig = "{\"apiList\":{\"getFileData\":\"/s/gl/getFileData\",\"groupLesson\":\"/s/gl/groupLesson\",\"lessonRecord\":\"/s/gl/lessonRecord\",\"lessonRecordInfo\":\"/s/gl/lessonRecordInfo\",\"recordMsg\":\"/s/gl/recordMsg\",\"userInfo\":\"/s/gl/userInfo\"},\"lessonPicPlaceHolder\":\"//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/img-chat-bn-normal.png\",\"pptPicDefault\":\"//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/img-chat-bg-normal.jpg\"}";
+
+			var config = JSON.parse(frontEndConfig);
+			var apiList = config.apiList;
+			pptVoideo();
+//			getpptData(window.location.href,pptVoideo);
+			function getpptData(url,callback) {
+				var seq = 0; 
+				if (ppt_url) {
+					loadJsonDoc(apiList.getFileData+'?url=http://'+ppt_url,'GET',success);
+				}else{
+					console.log(voice_url);
+					callback('//'+voice_url);
+				}
+				setHTMlInfo();
+				setTimeout(function () {
+					requestMsg(record_obid,room_id);
+				},500);
+				function success(data){
+					console.log(data);
+					var timeArr = [], imgArr = [], ppt = data.recordppt;
+					for (var k=0,len=ppt.length;k<len;k++){
+						timeArr.push(ppt[k].TimeStamp);
+						imgArr.push(ppt[k].Url);
+					}
+					var voiceUrl = '//'+voice_url;
+					callback(voiceUrl,timeArr,imgArr);
+					console.log(voice_url);
+				}
+			}
+			function setHTMlInfo (val) {
+				var courseTime = document.querySelector('.schooltime .text'), shareTopic = document.querySelector('.share-topic');
+				courseTime.innerHTML += '2018-07-16 15:20:30'; 
+				shareTopic.querySelector('.pic img').src = "//ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/lessonShare/img/img-chat-bn-normal.png" ;
+				shareTopic.querySelector('.text .title').innerText = androidStrToEmoji('好的相聚');
+				shareTopic.querySelector('.text .introduce').innerText = androidStrToEmoji('此法能看看\n\n辐射能看看\n\n故德川家康') ;
+
+			}
+			function loadJsonDoc(url,method,callback,data){
+				xhr = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+				if(xhr!=null){
+				  	xhr.onreadystatechange=function () {
+				  		if (xhr.readyState==4&&xhr.status==200){
+						    callback(JSON.parse(xhr.responseText));
+						}
+				  	};
+				  	xhr.open(method,url,true);
+				  	xhr.send();
+				}else{alert("Your browser does not support XMLHTTP.");}
+		  	}
+			function pptVoideo(voiceUrl,TimeArr,ImgArr){
+				var timer = null;
+				var loading = document.querySelector('.loading');
+				var shadow = document.querySelector('.shadow');
+				var dots = loading.querySelectorAll('.dot');
+				var load_error = document.querySelector('.play-error');
+				var cross = false;
+				var initWidth = document.documentElement.clientWidth;
+				var initHeight = document.documentElement.clientHeight;
+				var pptImg = document.querySelector('.ppt img');
+				var last = 0;
+				var pptIndex = 0, timeInterval = TimeArr?getTimeInterval(TimeArr):0;
+				if(ImgArr&&ImgArr[ImgArr.length-1]!==''){
+					if(ImgArr[0] === '') {
+						ImgArr[0] = config.pptPicDefault;
+					}
+					ImgArr = ImgArr;
+				}else{
+					ImgArr = [config.pptPicDefault];
+				}
+				console.log(ImgArr);
+				var len = ImgArr?ImgArr.length:0;
+				function getTimeInterval(arr) {
+					var newArr = [0];
+					for (var k = 0,length = arr.length;k<length;k++){
+						var val = arr[k];
+						if(k>0) {
+							var interval = val-arr[k-1];
+							newArr.push(last + val-arr[k-1]);
+							last = last + val-arr[k-1];
+						}
+					}
+					return newArr;
+				}
+				function loadingAnimate(){ 
+					var last = 0,length = dots.length;
+					shadow.style.backgroundColor = '#353535';
+					loading.className = 'loading';
+					timer = setInterval(function(){
+						dots[last].className = 'dot';
+						last = ++last%length;
+						dots[last].className = 'dot on';
+					},500);
+				}
+				function loaded (){
+					if(timer){
+						clearInterval(timer);
+						shadow.style.backgroundColor = 'transparent';
+						loading.className = 'loading hide';
+					}
+				}
+				function loadError (){
+					shadow.style.backgroundColor = '#353535';
+					load_error.className = 'play-error';
+				}
+				function loadSuccess (){
+					load_error.className = 'play-error hide';
+					shadow.style.backgroundColor = 'transparent';
+				}
+				voicePlay();
+				function voicePlay(){
+					var m_voice = document.querySelector('.voice audio'),
+						playBtn = document.querySelector('.bottom-controls .btn'),
+						progress = document.querySelector('.bottom-controls .progress'),
+						maxW = document.querySelector('.bottom-controls .progress-wrap').clientWidth,
+						duration = document.querySelector('.bottom-controls .duration'),
+						currentTimeText = document.querySelector('.bottom-controls .play-time'),
+						progressBar = document.querySelector('.bottom-controls .progress-bar'),
+						progressWrap = document.querySelector('.bottom-controls .progress-wrap'),
+						voiceBox = document.querySelector('.voice'),
+						content = document.querySelector('.schooltime');	
+					m_voice.src = 'http://ht-blog.oss-cn-hongkong.aliyuncs.com/groupclass/18969/m_25aa3105632b854e780a6727061b7271.mp3';
+					pptImg.src = ImgArr[pptIndex]; 
+//					pptImg.addEventListener('error',function () {
+//						loadError();
+//						if (!m_voice.paused) {
+//							m_voice.pause();
+//						}
+//						console.error(' pic load error!');
+//						return;
+//						
+//					});
+					if (m_voice.canPlayType('audio/mp4;codecs="mp4a.40.5"')==''){
+						document.getElementById('notSupport').className = '';
+						console.error('');
+						return;
+					}
+					pptImg.addEventListener('load', function (){
+						loadSuccess();
+					});
+					
+					m_voice.addEventListener('waiting',function() {
+
+						loadingAnimate();
+					});
+					m_voice.addEventListener('canplay', function(){
+						duration.innerText = time(this.duration);
+						drag(progress,progressBar,maxW,m_voice);
+						loaded();
+					});
+					m_voice.addEventListener('loadedmetadata', function () {
+						loaded();
+						duration.innerText = time(this.duration);
+					});
+					m_voice.addEventListener('error',function(){
+						console.error("Media data load error!");
+						loadError();
+					});
+					m_voice.addEventListener('timeupdate',function(){
+						if(this.currentTime>0.001){duration.innerText = time(this.duration);}
+						 var curT = time(this.currentTime);
+						 var i = 0;
+			             currentTimeText.innerText = curT; 
+			             if(curT){  
+			                var w = (this.currentTime/Math.floor(this.duration))*maxW;
+			                progress.style.width = w/maxW*100+'%';
+			             }else{
+			             	progress.style.width = 0;
+			             }
+			             if (timeInterval) {
+				             pptIndex = getIndex(this.currentTime);
+				             pptImg.src = ImgArr[pptIndex];
+			             }
+
+					});
+					m_voice.addEventListener("play",function () {
+			           playBtn.className = 'btn play';
+			        });
+			        m_voice.addEventListener("pause",function () {
+			            playBtn.className = 'btn pause';
+			        });
+			        m_voice.addEventListener("playing",function () {
+			            m_voice.play();
+			            loaded();
+			        });
+			        m_voice.addEventListener("ended",function () {
+		             	this.currentTime = 0;
+			        });
+					playBtn.onclick = function(e){ 
+						 e = e || window.event;
+			            e.stopPropagation();
+
+			            if (!m_voice.paused) {
+			                m_voice.pause();
+			                playBtn.className = 'btn pause';
+			                return;
+			            }
+			            if (m_voice.readyState||m_voice.src){
+			            	m_voice.play();
+			            	playBtn.className = 'btn play';
+			            }
+			           var _timer =setInterval(function(){
+			            	if(m_voice.readyState > 0||m_voice.readyState > 1||m_voice.readyState > 2){
+			            		m_voice.play();
+			            	    playBtn.className = 'btn play';
+			            	    clearInterval(_timer);
+			            	}
+			            },30)
+					}
+					function getIndex(time){
+						var index = 0;
+						if (!timeInterval) return;
+						for (var i=len-1;i>0;i--){
+							if(timeInterval[i]<=time*1000) {
+								index = i;
+								break;
+							}
+						}
+						return index;
+					}
+					
+			        function drag(obj,mTarget,maxw,medio) {
+			            
+			            var dx, dw;
+			            var _u =window.navigator.userAgent.toLowerCase();
+			            if(_u.indexOf('iphone')>-1||_u.indexOf('ipad')>-1||_u.indexOf('android')>-1||_u.indexOf('linux')>-1){
+		            		mTarget.addEventListener("touchstart",function (e) {
+			            		e.stopPropagation();
+			            		e.preventDefault();
+				                if( e.targetTouches.length === 1 ){
+				                    var touch = e.targetTouches[0];
+				                    dx = touch.pageX;
+				                    dw = obj.clientWidth;
+				                }
+				            });
+				            mTarget.addEventListener("touchmove",function (e) {
+				            	e.preventDefault();
+				                if( e.targetTouches.length === 1){
+				                    try {
+				                        var touch = e.targetTouches[0];
+				                        var _x = touch.pageX - dx;
+				                        dw += _x;
+				                        dw = Math.max(0,dw);
+				                        dw = Math.min(dw,document.querySelector('.bottom-controls .progress-wrap').clientWidth);
+				                        obj.style.width = dw/document.querySelector('.bottom-controls .progress-wrap').clientWidth*100+'%';
+				                        m_voice.currentTime = (dw/document.querySelector('.bottom-controls .progress-wrap').clientWidth)*Math.floor(m_voice.duration);
+				                    }catch (e){}
+				                    dx = touch.pageX;
+				                }
+				            });
+			            }else{
+			            	mTarget.onmousedown = function (e) {
+		            		 	e = e || window.event;
+			            		e.stopPropagation();
+			            		e.preventDefault();
+				                dx = e.pageX;
+				                dw = obj.clientWidth;
+				                mTarget.onmousemove = function (e) {
+				            		e = e || window.event;
+				            		e.preventDefault();
+			                        var _x = e.pageX - dx;
+			                        dw += _x;
+			                        dw = Math.max(0,dw);
+			                        dw = Math.min(dw,document.querySelector('.bottom-controls .progress-wrap').clientWidth);
+			                        obj.style.width = dw/document.querySelector('.bottom-controls .progress-wrap').clientWidth*100+'%';
+			                        m_voice.currentTime = (dw/document.querySelector('.bottom-controls .progress-wrap').clientWidth)*Math.floor(m_voice.duration);
+				                    dx = e.pageX;
+					            }
+					            document.onmouseup = function(e){
+					            		mTarget.onmousemove = null;
+					            }
+			            	}
+				        }
+			        }	
+				}
+				function time( changeTime ){ 
+		            changeTime = parseFloat( changeTime );
+		            var h,m,s;
+		            h = Math.floor( changeTime/3600);
+		            m = Math.floor( changeTime%3600/60 ); 
+		            s = Math.floor( changeTime%60 ); 
+		            return twoDigits(h)+':'+twoDigits(m)+':'+twoDigits(s);
+		        }
+				function twoDigits(num){
+					return num>=10?num:'0'+num;
+				}
+			}
+			
+			function strToEmoji(str) {
+			    return String.fromCharCode(parseInt(str.substr(0,4),16),parseInt(str.substr(4,4),16))
+			}
+			
+			function androidStrToEmoji(str){
+				var newStr = '';
+				newStr = str.replace(/\[[^\[]*\]/gi,function(emojiTag){
+					  var unicodeEmoji = emojiTag.match(/\[(.*)\]/)[1];
+				      if (!(/^[0-9a-zA-Z]+$/gi.test(unicodeEmoji))||unicodeEmoji.length%4!==0) {
+				            return emojiTag;
+				      }
+				      if (!/^A-Za-z0-9+$/.test(unicodeEmoji)&&unicodeEmoji.length%4!==0) {
+				            return '';
+				      }
+				      return strToEmoji(unicodeEmoji)
+				})
+				return newStr;
+			}
+			function requestMsg(obId,roomId){
+			    var seq = 0;
+			    var userInfo = {};
+			    
+			    var result = '';
+			    
+			    $('.content').dropload({
+			        scrollArea : window,
+			        loadDownFn : function(me){
+			            
+			            $.ajax({
+			                type: 'GET',
+			                
+			                
+			                url: apiList.recordMsg+'/'+obId+'?cliseq='+seq+'&roomid='+roomId+'',
+			                dataType: 'json',
+			                success: function(data){
+			                	var curSeq = data.cur_max_seq;
+			                	
+			                	data = data.data;
+			                    var arrLen = data?data.length:0;
+			                   
+			                    if(arrLen > 0 && curSeq!=seq){
+			                    	seq = curSeq;
+			                    	 apendTemplate(arrLen,data);
+			                    
+			                    }else{
+			                        
+			                        me.lock();
+			                        
+			                        me.noData();
+			                    }
+			                    
+			                    setTimeout(function(){
+			                        
+			                        $('.lists').append(result);
+			                        result = '';
+			                        
+			                        me.resetload();
+			                    },1000);
+			                },
+			                error: function(xhr, type){
+			                    console.error(type);
+			                    
+			                    
+			                }
+			                
+			            });
+			        }
+			    });
+    			function apendTemplate (arrLen,data) {
+    					var sender_id = '';
+    					console.log(data);
+                        for(var i=0; i<arrLen; i++){
+                        	sender_id = data[i].sender_id;
+                        	userInfo[sender_id] = {};
+                    	}
+                    	getUserInfo(callback);
+                    	function callback() {
+                    		for(var j=0; j<arrLen; j++){
+	                   			var classname = 'student'; 
+	                        	var pic = '',flagName = '';
+	                        	var userid = data[j].sender_id;
+	                        	
+	                        	for (var i=0,len = adminList.length;i<len;i++) {
+	                        		if (userid===adminList[i]){classname = 'teacher'}
+	                        	}
+	                        	
+	                        	
+	                        	userid===openid?classname += ' me':classname += ' other';
+	                        	for(var key in userInfo) {
+	                        		if (userid===key) {	
+	                        			pic = userInfo[key].pic;
+	                        			flagName = userInfo[key].flag;
+	                        		}
+	                        	}
+	                        	var message = androidStrToEmoji(data[j].text.text);
+	                            result +=   '<section class="'+classname+'">'+
+	    										'<p class="nickname">'+data[j].sender_name+'</p>'+
+	    										'<span class="user-pic">'+
+	    											'<img src="'+pic+'" alt="" />'+
+	    											'<span  class="flag emojione-64-flags '+flagName+'" ></span>'+
+	    										'</span>'+
+	    										'<span class="message">'+message+'</span>'+
+	    									'</section>';
+                   			}
+                    	};
+				};
+				
+				function getUserInfo(callback) {
+				 	
+				 	var requestUrl = apiList.userInfo+'?openid=';
+	            	for (key in userInfo) {
+	            		requestUrl += key+',';
+	            	}
+	            	requestUrl = requestUrl.replace(/\,$/,'');
+	            	console.log(requestUrl);
+	            	
+	            	var xhr = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+					if(xhr!=null){
+					  	xhr.onreadystatechange=function () {
+					  		if (xhr.readyState==4&&xhr.status==200){
+							    setUserInfo(JSON.parse(xhr.responseText));
+							}
+					  	};
+					  	xhr.open('GET',requestUrl,true);
+					  	xhr.send();
+					}else{alert("Your browser does not support XMLHTTP.");}
+	            	function setUserInfo (data) {
+	            		data = data.data;
+	            		for (key in data) {
+	            			userInfo[key].HU = data[key].HU;
+	            			userInfo[key].CN = data[key].CN;
+	            			userInfo[key].pic = data[key].HU;
+	            			userInfo[key].flag = flagParse(data[key].CN);
+	             		}
+	             		callback();
+	            	}
+	            	function flagParse(params) {
+	            	  var areaCode = params;
+	            	  if (!(/^[A-Z]+$/.test(areaCode))) {
+	            	    return '';
+	            	  }
+	            	  switch(areaCode){
+	            	    case 'UK':  areaCode="GB"; break;
+	            	    case 'IK':  areaCode="AE"; break;
+	            	  }
+	            	  return flagSource[':flag_'+areaCode.toLowerCase()+':']?'_'+flagSource[':flag_'+areaCode.toLowerCase()+':'].uc_base:'';
+	             	}
+            	};
+			}
+			
+		}
+		
+
+		</script>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Special gift for you</title>
+		<meta name="viewport" content="width=750 ,user-scalable=no" />
+		<style type="text/css">
+			*{margin:0;padding: 0;}
+			body,html{
+				width: 100%;
+				height: 100%;
+				background-color:#fff ;
+				-webkit-overflow-scrolling: touch;
+				font-family: '黑体';
+			}
+			a{text-decoration:  none;display: inline-block;}
+			.activity{
+				position: relative;
+				padding-top: 1px;
+				width: 750px;
+				margin: auto;
+				height: 100%;
+				background: url('http://ht-blog.oss-cn-hongkong.aliyuncs.com/class_share/20180607/48e10baa86713909a10dd9ac29511358.png?x-oss-process=image/resize,w_750') no-repeat 0 0;
+			}
+			.title{
+				margin-top: 469px;
+				height: 79px;
+				 font-family: PingFangHK;
+				 font-size: 56px;
+				 font-weight: 600;
+				 text-align: center;
+				 color: #484848;
+			}
+			.intro{
+			  position: relative;
+			  font-family: PingFangHK;
+			  width: 560px;
+			  margin: auto;
+			  font-size: 36px;
+			  line-height: 1.5;
+			  text-align: center;
+			  color: #484848;
+
+			}
+			.del{
+			  position: absolute;
+			  right: 0;
+			  bottom: 16px;
+			  width: 371px;
+			  height: 18px;
+			  opacity: 0.2;
+			  background-color: #ff8600;
+			}
+			.earnings{
+				margin-top: 46px;
+				padding-left: 80px;
+			}
+			.earnings_title{
+				height: 40px; 
+				opacity: 0.5; 
+				font-family: PingFangHK; 
+				font-size: 28px; 
+				color: #5a5a5a;
+			}
+			.earnings_content{
+				font-family: PingFangHK; 
+				font-size: 28px;  
+				line-height: 1.71; 
+				color: #484848;
+			}
+			.right_icon{
+				display: inline-block;
+			    width:30px;
+			    height:30px;
+			    position: relative;
+			}
+			.right_icon:after {
+			    content: '\00a0';
+			    display: inline-block;
+			    border: 4px solid #ff8f00;
+			    border-top-width: 0;
+			    border-right-width: 0; 
+			    width: 18px;
+			    height: 10px;
+			    -webkit-transform: rotate(-50deg);
+			    position: absolute;
+			    top:8px;
+			    left:4px;
+			    clear: both;
+			}
+			.discounts{
+				margin-top: 46px;
+				font-family: PingFangHK; 
+				font-size: 36px; 
+				font-weight: 600; 
+				line-height: 1.5;  
+				text-align: center; 
+				color: #484848;
+			}
+			.count{
+				color: #ff8600;
+			}
+			.activity_time{
+				width: 575px;
+				margin:24px auto 0;
+				padding-bottom: 182px;
+				font-family: PingFangHK; 
+				font-size: 28px;
+				line-height: 1.5; 
+				text-align: center; 
+				color: #484848;
+			}
+			.btn{
+				/*position: fixed;*/
+				/*margin-top: 184px;*/
+				padding-bottom: 40px;
+				width: 750px;
+				margin: auto;
+				bottom: 40px;
+				text-align: center;
+			}
+			.buyBtn{
+				width: 610px; 
+				height: 100px; 
+				border-radius: 48.5px; 
+				text-align: center;
+				line-height: 100px;
+				color: #ffffff;
+				font-size: 36px;
+				background-image: linear-gradient(349deg, #ff6e51, #ffc100); 
+				box-shadow: 0 12px 32px 0 rgba(255, 106, 95, 0.2);
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="activity">
+			<h1 class="title">Special gift for you</h1>
+			<p class="intro">Hello and congratulations!<br/>
+							You've been selected to <br />
+							experience HelloTalk VIP for free<span class="del"></span>
+			</p>
+			<section class="earnings">
+				<p class="earnings_title">What does it mean for you?</p>
+				<p class="earnings_content">
+					<span class="right_icon"></span>	No annoying ads.<br />
+					<span class="right_icon"></span> Unlimited translations.<br />
+					<span class="right_icon"></span> Learning & teaching multiple languages.<br />
+					<span class="right_icon"></span> Advanced user search features.
+				</p>
+			</section>
+			<p class="discounts">Go VIP for a year to save <br />
+				<span class="count">over £‎10 GBP</span>	
+			</p>
+			<p class="activity_time">First 30 days are on us. You can cancel anytime if you change your mind.
+			</p>
+			<p class="btn"><a class="buyBtn" href="hellotalk://shop_trial">Go VIP for free</a></p>
+		</section>
+	</body>
+	<script type="text/javascript">
+		(function() { // 禁止iOS双击上滑
+			var agent = navigator.userAgent.toLowerCase();
+			var iLastTouch = null;
+			if (agent.indexOf("iphone") >= 0 || agent.indexOf("ipad") >= 0) {
+			    document.body.addEventListener("touchend", function (event) {
+			        var a = new Date().getTime();
+			        iLastTouch = iLastTouch || a + 1;
+			        var c = a - iLastTouch;
+			        if (c < 500 && c > 0) {
+			            event.preventDefault();
+			            return false;
+			        }
+			        iLastTouch = a
+			    }, false);
+			};
+		})();
+	</script>
+</html>

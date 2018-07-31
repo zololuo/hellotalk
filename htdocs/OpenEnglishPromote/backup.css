@@ -1,0 +1,229 @@
+/*.btns{
+				width: 100%;
+				height: 50px;
+				background-color: #ffffff;
+  				box-shadow: 0 0 4px 8px rgba(0, 0, 0, 0.05);
+  				overflow: hidden;
+			}
+			
+			.btns>button{
+				width: 50%;
+				height: 100%;
+				text-align: center;
+				border: none;
+				outline: none;
+				float: left;
+				font-size: 17px;
+			  	font-weight: 500;
+			  	line-height: 1.47;
+			}
+			.nowBuy{background-color: #48bf20;color: #FFFFFF;}*/
+			/*.first_title{
+				  margin:auto;
+				  width: 224px;
+				  height: 56px;
+				  font-size: 20px;
+				  font-weight: 600;
+				  text-align: center;
+				  color: #484848;
+			}
+			.second_title{
+				 margin: 12px auto 0;
+				  width: 310px;
+				  height: 40px;
+				  font-size: 14px;
+				  letter-spacing: -0.3px;
+				  text-align: center;
+				  color: #7e7e7e;
+			}
+			
+			.pic_and_text_list{
+				width: 100%;
+				margin-top: 35px;
+				padding-left: 20px;
+				padding-right: 27.5px;
+				padding-bottom: 16.5px;
+				box-sizing: border-box;
+			}
+			.pic_and_text_list>li{
+				display: block;
+				width: 100%;
+				margin-bottom: 23.5px;
+			}
+			.pic_and_text_list>li:after{
+				display: block;
+				content: '';
+				overflow: hidden;
+				clear: both;
+			}
+			.pic{
+				display: block;
+				float: left;
+				width: 80px;
+				height: 80px;
+				border-radius: 50%;
+				
+			}
+			.text{
+				width: calc(100% - 95px);
+				float: left;
+				margin-left: 15px;
+			}
+			.text .name{
+				  width: 100%;
+				  font-size: 18px;
+				  font-weight: 500;
+				  color: #484848;
+			}
+			.text .introduction{
+				width: 100%
+				margin-top: 5px;
+				 font-size: 14px;
+				  color: #7e7e7e;
+			}
+			.bottom_blank{
+				height: 112.5px;
+			}
+			.long_title{
+				width: 318.5px;
+			}
+			.max_long_title{
+				width: 375px;
+				font-size: 18px;
+			}
+			.phone_pic{
+				margin: auto;
+				width: 310px;
+			}
+			.bg_f8{
+				background-color: #f8f8f8;
+			}
+			.third_title{
+			  font-size: 16px;
+			  letter-spacing: -0.3px;
+			  text-align: center;
+			  color: #7e7e7e;
+			}*/
+			/*.card{
+			 position: relative;
+			  margin:65.5px auto 0;
+			  width: 335px;
+			  height: 210px;
+			  border-radius: 6px;
+			  background-color: #ffffff;
+			  box-shadow: 0 23px 30px 0 rgba(0, 0, 0, 0.05);
+			}
+			.head_pic{
+				position: absolute;
+				top: -30px;
+				left: 50%;
+				margin-left: -30px;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+			}
+			.username{
+				    padding-top: 30px;
+				    width: 100%;
+				    font-size: 16px;
+				    font-weight: 500;
+				    color: #313236;
+				    margin: 9.5px auto;
+				    text-align: center;
+			}
+			.share_text{
+				margin:12.5px auto 0;
+				width: 226px;
+				font-size: 16px;
+				color: #858585;
+			}
+			.price_text{
+				font-weight: bold;
+				font-size: 20px;
+				text-align: center;
+			}
+			.price_card{
+				 margin: auto;
+				 width: 335px;
+				 height: 70px;
+				 border-radius: 6px;
+				 background-color: #00a7d4;
+				 box-shadow: 0 7.5px 12.5px 0 rgba(0, 0, 0, 0.15);
+			}
+			*/
+			/*.left_text{
+			  display: block;
+			  float: left;
+			  margin-left: 40px;
+			  margin-top: 48px;
+			  font-size: 32px;
+			  letter-spacing: 0.6px;
+			  text-align: left;
+			  color: #ffffff;
+			}
+			.right_text{
+				display: block;
+				float: right;
+				margin-right: 50px;
+				margin-top: 50px;
+				font-size: 50px;
+				font-weight: bold;
+				color: #FFFFFF;
+			}*/
+			/*.equities_title{
+				font-size: 32px;
+  				font-weight: 600;
+  				color: #484848;
+  				text-align: center;
+  				margin-top: 57px;
+			}
+			.equities{
+				margin-top: 17px;
+				font-size: 32px;
+				line-height: 1.56;
+				text-align: center;
+				color: #858585;
+			}*/
+			
+			/*.share{
+				position: relative;
+				width: 660px;
+				margin: auto;
+				border-top: 1px solid  #e0e0e0;
+				margin-top: 113px;
+			}
+			.share_title{
+				position: absolute;
+				top: -22.5px;
+				left: 95px;
+				background-color: #FFFFFF;
+				width: 190px;
+  				height: 45px;
+				font-size: 32px;
+				font-weight: 600;
+		  	    text-align: center;
+				color: #484848;
+			}
+			.share_equity{
+				margin-top: 53px;
+				font-size: 32px;
+				color: #858585;
+				text-align: center;
+			}*/
+			/*.share_btn{
+				display: block;
+				margin: 50px auto 95px;
+				width: 500px;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				border-radius: 48.5px;
+				background-color: #405bd3;
+			}*/
+			/*
+			.margin_top28{margin-top: 28px;}
+			.margin_top29{margin-top: 29px;}
+			.padding_top28{padding-top: 28px;}
+			.padding_top30{padding-top: 30px;}
+			.padding_bot53{padding-bottom: 53px;}*/
+			

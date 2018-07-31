@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Hellotalk Open English</title>
+		<script type="text/javascript">
+			var html = document.querySelector('html');var width = html.getBoundingClientRect().width;html.style.fontSize = width / 10 + 'px';
+		</script>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			html,body{
+				width: 100%;
+				height: 100%;
+				font-size: 100px;
+			}
+			img{width: 100%;vertical-align: middle;}
+			li{list-style: none;}
+			.btns {
+			 position: fixed;
+			 bottom: 0;
+			  width: 100%;
+			  height: 1.3333333333333333rem;
+			  background-color: #ffffff;
+			  /*box-shadow: 0 0 4px 8px rgba(0, 0, 0, 0.05);*/
+			 box-shadow: 0 0 0.05333333333333334rem 0.10666666666666667rem rgba(0, 0, 0, 0.05);
+			  overflow: hidden;
+			  z-index: 9999;
+			}
+			.btns > button {
+			  width: 100%;
+			  height: 100%;
+			  text-align: center;
+			  border: none;
+			  outline: none;
+			  float: left;
+			  font-size: 0.4533333333333333rem;
+			  font-weight: 500;
+			  line-height: 1.47;
+			}
+			.nowBuy {
+			  width: 100%;
+			  background-color: #48bf20;
+			  color: #FFFFFF;
+			}
+			
+			.first_title {
+			  margin: auto;
+			  width: 5.973333333333334rem;
+			  height: 1.4933333333333334rem;
+			  font-size: 0.5333333333333333rem;
+			  font-weight: 600;
+			  text-align: center;
+			  color: #484848;
+			}
+			.second_title {
+			  margin: 0.32rem auto 0;
+			  width: 8.266666666666667rem;
+			  height: 1.0666666666666667rem;
+			  font-size: 0.37333333333333335rem;
+			  letter-spacing: -0.3px;
+			  text-align: center;
+			  color: #7e7e7e;
+			}
+			.pic_and_text_list {
+			  width: 100%;
+			  margin-top: 0.9333333333333333rem;
+			  padding-left: 0.5333333333333333rem;
+			  padding-right: 0.7333333333333333rem;
+			  padding-bottom: 0.44rem;
+			  box-sizing: border-box;
+			}
+			.pic_and_text_list > li {
+			  display: block;
+			  width: 100%;
+			  margin-bottom: 0.6266666666666667rem;
+			}
+			.pic_and_text_list > li:after {
+			  display: block;
+			  content: '';
+			  overflow: hidden;
+			  clear: both;
+			}
+			.pic {
+			  display: block;
+			  float: left;
+			  width: 2.1333333333333333rem;
+			  height: 2.1333333333333333rem;
+			  border-radius: 50%;
+			}
+			.text {
+			  width: 6.2rem;;
+			  float: left;
+			  margin-left: 0.4rem;
+			}
+			.text .name {
+			  width: 100%;
+			  font-size: 0.48rem;
+			  font-weight: 500;
+			  color: #484848;
+			}
+			.text .introduction {
+			  width: 100%;
+			  margin-top: 0.13333333333333333rem;
+			  font-size: 0.37333333333333335rem;
+			  color: #7e7e7e;
+			}
+			.bottom_blank {
+			  height: 3rem;
+			}
+			.long_title {
+			  width: 8.493333333333334rem;
+			}
+			.max_long_title {
+			  width: 100%;
+			  font-size: 0.49333333333333335rem;
+			}
+			.phone_pic {
+			  margin: auto;
+			  width: 8.266666666666667rem;
+			}
+			.bg_f8 {
+			  background-color: #f8f8f8;
+			}
+			.third_title {
+			  font-size: 0.4266666666666667rem;
+			  letter-spacing: -0.3px;
+			  text-align: center;
+			  color: #7e7e7e;
+			}
+
+			/* card */
+			.card {
+			  position: relative;
+			  margin: 1.7466666666666666rem auto 0;
+			  width: 8.933333333333334rem;
+			  height: 5.6rem;
+			  border-radius: 0.16rem;
+			  background-color: #ffffff;
+			  box-shadow: 0 23px 30px 0 rgba(0, 0, 0, 0.05);
+			}
+			.head_pic {
+			  position: absolute;
+			  top: -0.8rem;
+			  left: 50%;
+			  margin-left: -0.8rem;
+			  width: 1.6rem;
+			  height: 1.6rem;
+			  border-radius: 50%;
+			}
+			.head_pic>img{position: absolute;}
+			.username {
+			  padding-top: 0.8rem;
+			  width: 100%;
+			  font-size: 0.4266666666666667rem;
+			  font-weight: 500;
+			  color: #313236;
+			  margin: 0.25333333333333335rem auto;
+			  text-align: center;
+			}
+			.share_text {
+			  margin: 0.3333333333333333rem auto 0;
+			  width: 6.026666666666666rem;
+			  font-size: 0.4266666666666667rem;
+			  color: #858585;
+			}
+			.price_text {
+			  font-weight: bold;
+			  font-size: 0.5333333333333333rem;
+			  text-align: center;
+			}
+			.price_card {
+			  margin: auto;
+			  width: 8.933333333333334rem;
+			  height: 1.8666666666666667rem;
+			  border-radius: 0.16rem;
+			  background-color: #00a7d4;
+			  box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.15);
+			  overflow: hidden;
+			}
+			
+			.left_text {
+			  display: block;
+			  float: left;
+			  margin-left: 0.5333333333333333rem;
+			  line-height: 1.8666666666666667rem;
+			  font-size: 0.4266666666666667rem;
+			  letter-spacing: 0.6px;
+			  text-align: left;
+			  color: #ffffff;
+			}
+			.right_text {
+			  display: block;
+			  float: right;
+			  margin-right: 0.6666666666666666rem;
+			  line-height: 1.8666666666666667rem;
+			  font-size: 0.6666666666666666rem;
+			  font-weight: bold;
+			  color: #FFFFFF;
+			  font-family: 'DINAlternate';
+			}
+			
+			.equities_title {
+			  font-size: 0.4266666666666667rem;
+			  font-weight: 600;
+			  color: #484848;
+			  text-align: center;
+			  margin-top: 0.76rem;
+			}
+			.equities {
+			  margin-top: 0.22666666666666666rem;
+			  font-size: 0.4266666666666667rem;
+			  line-height: 1.56;
+			  text-align: center;
+			  color: #858585;
+			  margin-bottom: 2.6rem;
+			}
+			/*分享有奖*/
+			
+			.share {
+			  position: relative;
+			  width: 8.8rem;
+			  margin: auto;
+			  border-top: 1px solid  #e0e0e0;
+			  margin-top: 1.5066666666666666rem;
+			}
+			.share_title {
+			  position: absolute;
+			  top: -0.3rem;
+			  left: 50%;
+			  margin-left: -1.2666666666666666rem;
+			  background-color: #FFFFFF;
+			  width: 2.533333333333333rem;
+			  height: 0.6rem;
+			  font-size: 0.4266666666666667rem;
+			  font-weight: 600;
+			  text-align: center;
+			  color: #484848;
+			}
+			
+			.share_equity {
+			  margin-top: 0.7066666666666667rem;
+			  font-size: 0.4266666666666667rem;
+			  color: #858585;
+			  text-align: center;
+			}
+			.invite_btn {
+			  display: block;
+			  margin: 0.6666666666666666rem auto 2.6rem;
+			  width: 6.666666666666667rem;
+			  height: 1.3333333333333333rem;
+			  line-height: 1.3333333333333333rem;
+			  text-align: center;
+			  border-radius: 0.6466666666666666rem;
+			  background-color: #405bd3;
+			  color: #FFFFFF;
+			  font-size: 0.4266666666666667rem;;
+  			  font-weight: 600;
+			  outline: none;
+			}
+			.margin_top28 {
+			  margin-top: 0.7466666666666667rem;
+			}
+			.margin_top29 {
+			  margin-top: 0.7866666666666666rem;
+			}
+			.padding_top28 {
+			  padding-top: 0.7466666666666667rem;
+			}
+			.padding_top30 {
+			  padding-top: 0.8rem;
+			}
+			.padding_bot53 {
+			  padding-bottom: 1.4266666666666667rem;
+			}
+			.c_4255d6{color:#4255d6;}
+			.c_444dd9{color: #444dd9;}
+			.c_405bd3{color: #405bd3;}
+			.del_line{text-decoration: line-through;}
+			i{font-style: normal;}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/1a9a027b851985ddce570c0fb83064f8.png?x-oss-process=image/resize,w_750" alt="" />
+			
+			<section>
+				<p class="first_title margin_top28">跟着专业美、加外教学习时髦、地道的英语表达</p>
+				<p class="second_title">教师团队阵容强大，均有十多年英语教育经验专家课程内容每日更新，get地道英语表达技能</p>
+			</section>
+			<section>
+				<ul class="pic_and_text_list">
+					<li>
+						<img class="pic" src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/2162406809fc82752733c0a23b851950.png?x-oss-process=image/resize,w_750" alt="" />
+						<div class="text">
+							<p class="name">Adam</p>
+							<p class="introduction">来自加拿大多伦多，国际关系硕士。丰富的英语口语教学经验，解释深入简出。风格睿智，嗓音醇厚。</p>
+						</div>
+					</li>
+					<li>
+						<img class="pic" src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/d9d259806119b2730f2e0ed266550a66.png?x-oss-process=image/resize,w_750" alt="" />
+						<div class="text">
+							<p class="name">Tara</p>
+							<p class="introduction">15年英语教学经验，在多所语言机构任教，热爱英语教学创新，参与多项英语课程开发。</p>
+						</div>
+					</li>
+					<li>
+						<img class="pic" src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/b9cc18e21cd1ba1f9ff253e479a94efc.png?x-oss-process=image/resize,w_750" alt="" />
+						<div class="text">
+							<p class="name">Connor</p>
+							<p class="introduction">加拿大UBC英语第二语言教育硕士。在亚洲拥有丰富的口语教学经验，非常喜爱制作教学短视频。</p>
+						</div>
+					</li>
+					<li>
+						<img class="pic" src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/a73e40cf317b598fce7a7b8f5cb6b028.png?x-oss-process=image/resize,w_750" alt="" />
+						<div class="text">
+							<p class="name">Spencer</p>
+							<p class="introduction">来自美国首都华盛顿，曾任职美国驻沪领事馆。精通中文、中国文化。讲解风趣幽默、知识面广，高人气的英语主播。</p>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<section class="bg_f8">
+				<p class="first_title long_title padding_top28" >合理利用碎片化时间，每天20分钟做到少时高频，提高学习效率</p>
+				<p class="second_title bottom_blank">20分钟/节课<br/>分级进阶，由浅至深，稳步提高英语<br/>运用Collins情境学习理论<br/>涵盖职场、生活近1000个使用场景<br/><br/><br/>
+				</p>
+				<p class="phone_pic"><img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/a944f8f00035ff2d4a9077c908d32d2e.png?x-oss-process=image/resize,w_750"/>
+				</p> 
+			</section>
+			<section class="padding_top30">
+				<p class="first_title max_long_title">内容多样化<br/>涵盖对话、词汇、例句、语法、文化等板块</p>
+				<p class="third_title">多维度训练英语能力，增长语言文化见识</p>
+				<p class="phone_pic"><img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/0b2f48b5bd991e65281de07a436b4d80.png?x-oss-process=image/resize,w_750"/>
+				</p> 
+			</section>
+			<section class="bg_f8 padding_top28 padding_bot53">
+				<p class="first_title" style="height: auto;">用户评价</p>
+				<section class="card">
+					<p class="head_pic"><img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/c99ed696dc17d7fece3824658f849b57.png?x-oss-process=image/resize,w_750"/></p>
+					<p class="username">Angela</p>
+					<p class="share_text">
+						每天伴着OpenEnglish的节目醒来，洗漱收拾完，坐下来吃早餐，刚好20分钟节目完毕。坚持了半年时间，上次听华盛顿邮报的时候，已经不用再像以前一样查字典了。
+					</p>
+				</section>
+				<section class="card card1">
+					<p class="head_pic"><img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180516/f2cb874368ce2fcda62e16887b464a71.png?x-oss-process=image/resize,w_750"/></p>
+					<p class="username">Lucy</p>
+					<p class="share_text">
+						以前和公司的外国同事交流的时候，他们总是听不懂我在说什么，后来学了OpenEnglish，才知道自己的表达不地道。超级喜欢Spensor小哥哥的声音，太撩人了！
+					</p>
+				</section>
+			</section>
+			<section class="padding_top28">
+				<p class="first_title" style="height: auto;width: 100%;">限时加个优惠：每天之花1.9元</p>
+				<p class="price_text c_4255d6">原价&nbsp;<span class="c_405bd3 del_line">&nbsp;<i class="c_444dd9">¥</i>998&nbsp;</span>
+				</p>
+				<section class="price_card margin_top29">
+					<span class="left_text">12个月产品套餐</span>
+					<span class="right_text">¥698.00</span>
+				</section>
+				<p class="equities_title">购买套餐后你还将获得</p>
+				<p class="equities">
+					24节Warm up热身课程<br/>
+					体验HelloTalk 1个月VIP权益<br/>
+					加入学习社群获得更多学习资源<br/>
+				</p>
+			</section>
+			<!--<section class="share">
+				<p class="share_title">分享有奖</p>
+				<p class="share_equity">赠送HelloTalk1个月VIP权益</p>
+				<button class="invite_btn">马上邀请好友加入</button>
+			</section>-->
+			<section class="btns">
+				<!--<button class="freeListen">试听免费课</button>-->
+				<button class="nowBuy">立即购买</button>
+			</section>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var nowBuy = document.getElementsByClassName('nowBuy')[0];
+		nowBuy.onclick = function() {
+			console.log('立即购买');
+		}
+		console.log(new Date(1526974268895));
+	</script>
+</html>

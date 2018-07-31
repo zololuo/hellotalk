@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<style>
+		*{padding:0;margin: 0;}img{vertical-align: middle;}
+		#canvas{margin: auto;border: 1px solid #3388CC;}
+		.input_wrap{
+			float: left;
+			width: 200px;
+			margin-top: 50px;
+			text-align: center;
+		}
+		input{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<div class="input_wrap">
+		<p>
+			<label for="canvas_x">x:</label>
+			<input type="number" id="canvas_x" value=""  onchange="cordinate()"/>
+		</p>
+		<p>
+			<label for="canvas_x">y:</label>
+			<input type="number" id="canvas_y"  value="" onchange="cordinate()" />
+		</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	var canvas_x = document.getElementById('canvas_x');
+	var canvas_y = document.getElementById('canvas_y');
+    var dotArr = [];
+    var num    =  5;
+    // 宽度五等分
+    var aequilate = canvas.width/num;
+    // 高度五等分
+    var contour   = canvas.height/num;
+    for(var i=0;i<=num;i++) {
+    		for(var j=0;j<=num;j++) {
+    			var x = aequilate*i;
+    			var y = contour*j;
+    			dotArr.push({x:x,y:y});
+    		}
+    }
+    drawGrid();
+    drawCenterLine();
+    var o = {
+    				x:canvas.width/2,
+    				y:canvas.height/2
+ 	};
+    	drawCircle(o,contour/2,'red',1,true);
+ 	drawHexagon(o,contour/2,'#000',null,true);
+    drawCircle(o,contour/2,'#000');
+    canvas.onmousedown = function (e) {
+    			var self = this;
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            console.log(x);console.log(y);
+            canvas_x.value = x;
+            canvas_y.value = y;
+            cordinate();
+        }
+//  cordinate();
+    
+    function cordinate() {
+    		if(canvas_x.value&&canvas_y.value){
+			var o = {x:canvas_x.value,y:canvas_y.value} ;
+			 // o,r,c,w,isSolid
+			drawCircle(o,2,'#000',1,true);
+		}
+    }
+    
+    function writeName() {
+		ctx.font = '32pt Microsoft Yahei';
+		ctx.fillStyle = 'cornflowerblue';
+		ctx.strokeStyle = 'blue';
+		ctx.fillText("陈日蕊",canvas.width/2 - 65 ,
+							canvas.height/2  );
+		ctx.strokeText("陈日蕊", canvas.width/2  -63,
+	                             canvas.height/2   );
+    }
+    function drawGrid() {
+    		var start_index = num+1, start_index1 = 1;
+	    for(var i=0;i<num-1;i++){
+	    		var start = start_index, end = start_index+5, start1 = start_index1+30, end1 = start_index1;
+	    		// 垂直方向虚线
+	    		drawDashLine(dotArr[start],dotArr[end]);
+	    		// 水平方向虚线
+	    		drawDashLine(dotArr[start1],dotArr[end1]);
+	    		start_index = end+1;
+	    		start_index1 ++;
+	    }
+    }
+    function drawDashLine(a,b) { // 绘制虚线
+    		ctx.setLineDash([2,3]);   
+    		ctx.strokeStyle = '#f36';
+    		ctx.beginPath();
+    		ctx.moveTo(a.x,a.y);
+    		ctx.lineTo(b.x,b.y);
+    		ctx.strokeStyle = 'black';
+    		ctx.lineWidth = 1;
+    		ctx.closePath();
+    		ctx.stroke();
+    }
+ 	function drawCenterLine() {
+ 		ctx.setLineDash([]);
+ 		ctx.strokeStyle = 'red';
+    		ctx.lineWidth = 1;
+ 		ctx.beginPath();
+ 		ctx.moveTo(canvas.width/2,0);
+ 		ctx.lineTo(canvas.width/2,canvas.height);
+    		ctx.closePath();
+    		ctx.stroke();
+    		ctx.beginPath();
+ 		ctx.moveTo(0,canvas.height/2);
+ 		ctx.lineTo(canvas.width,canvas.height/2);
+    		ctx.closePath();
+    		ctx.stroke();
+ 	}
+    function drawHexagon(o,r,c,w,isSolid) { // 圆心坐标，半径，颜色，线宽,实心/空心
+    		var h = (Math.sqrt(3)/2)*r;
+    		c=c||'#000';
+    		ctx.beginPath();
+    		ctx.lineWidth = w||1;
+    		ctx.moveTo(o.x-r,o.y);
+    		ctx.lineTo(o.x-r/2,o.y-h);
+    		ctx.lineTo(o.x+r/2,o.y-h);
+    		ctx.lineTo(o.x+r,o.y);
+    		ctx.lineTo(o.x+r/2,o.y+h);
+    		ctx.lineTo(o.x-r/2,o.y+h);
+    		ctx.closePath();
+    		if(isSolid){
+    			ctx.fillStyle = c;
+    			ctx.fill();
+    		}else{
+    			ctx.strokeStyle = c;
+    			ctx.stroke();
+    		}
+    }
+    function drawCircle(o,r,c,w,isSolid){ // 圆心坐标，半径，颜色，线宽,实心/空心
+    		ctx.beginPath();
+		ctx.arc(o.x,o.y,r,0,360,false);
+		ctx.lineWidth=w||1;
+		c=c||'#000';
+		if(!isSolid){
+			ctx.strokeStyle=c;
+			ctx.stroke();
+		}else{
+			ctx.fillStyle=c;
+			ctx.fill();
+		}
+		ctx.closePath();
+    }
+</script>
+</html>

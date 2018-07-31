@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas Demo</title>
+		<style>
+			body{
+				background-color: #bbb;
+			}
+			#canvas{
+				border: 1px solid #1F1F1F;
+				background-color: #FFFFFF;
+			}
+		</style>
+		<script src="js/tween.js"></script>
+		<script src="js/compatible.js"></script>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800">您的浏览器版本过低，不支持canvas</canvas>
+		<script>
+		    var canvas = document.getElementById("canvas");
+		    var ctx = canvas.getContext("2d"); 
+	        var sColor = 'rgb(0,188,200)';
+	        var eColor = 'rgb(0,28,100)';
+	        var pxpm = canvas.width/20; 
+			// ballRadius =30, g = 9.8 , mocali = 0.5,balls = [],collarg = 0.8,pxpm = canvas.width/20; 
+			// 意思很明显：ballradius是球半径，g是重力加速度，mocali是空气阻力引起的水平方向的减速度，
+			// balls是一个用于存放小球对象的数组，collarg是弹力系数。pxpm是像素与米之间的映射，把画布当成是20米宽的区域
+			var Ball = function(x,y,r,sColor,eColor){
+				this.x = x;
+				this.y = y;
+				this.oldx = x;
+				this.oldy = y;
+				this.vx = 1;
+				this.vy = 0.1;
+				this.radius = r;
+				this.color = this.setColor(sColor,eColor);
+			}				
+			Ball.prototype = {
+				setColor: function(sColor,eColor) {
+					if(!ctx){
+						alert('画布环境不存在');
+						return false;
+					}
+		  		var g1 = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);  
+		        g1.addColorStop(0.1, sColor );    
+		        g1.addColorStop(1, eColor); 
+		        return g1;
+				},
+				draw: function() {
+					if(!ctx){
+						alert('画布环境不存在');
+						return false;
+					}
+					this.clear(0,0,800,800);
+					ctx.fillStyle = this.color;  
+			        ctx.beginPath();  
+			        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);  
+			        ctx.closePath();  
+			        ctx.fill();  
+			        this.moving = false;
+				},
+				run: function(t) { // 匀速
+			     this.x += t * this.vx * pxpm;
+			     // this.y += 
+		   		},
+		   		clear: function(x,y,w,h){
+		   			// 保存当前渲染上下文所进行的变换
+					ctx.save();
+					// 重置渲染上下文并清空画布
+					ctx.setTransform(1, 0, 0, 1, 0, 0);
+					ctx.clearRect(x, y, w, h);
+					// 恢复先前渲染上下文所进行的变换
+					ctx.restore();
+		   		}
+			};
+			var sColor = 'rgb(0,188,200)';
+	        var eColor = 'rgb(0,28,100)';
+	        var radius = 25;
+	        var time = 2000;
+	        function run() {
+    	        var position = { x: 150, y: 150};
+    	        var endPosition = {x: 450, y: 500};
+    	        var position_old = { x: 150, y:150};
+    		  	var ball = new Ball(position.x,position.y,radius,sColor,eColor);
+    		  	ball.draw();
+    		  	// new TWEEN.Tween( position ).to( { x: 450 }, 2000 ).easing( TWEEN.Easing.Linear.None ).start();
+    		  	new TWEEN.Tween( position ).to( endPosition, time ).easing( TWEEN.Easing.Back.InOut ).onUpdate( function () {
+    		  		var ball = new Ball(position.x,position.y,radius,sColor,eColor);
+    		  		ball.draw();
+    		  		position_old.x = position.x;
+    		  		position_old.y = position.y;
+    		  	}).start();
+	        }
+			window.addEventListener('load', function() {
+				run();
+				animate();
+			});
+			function animate(time) {
+				requestAnimationFrame( animate );
+				TWEEN.update(time);
+			}
+		</script>
+	</body>
+</html>

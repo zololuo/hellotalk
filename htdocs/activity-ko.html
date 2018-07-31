@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			html,body{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background-color:#fff ;
+				-webkit-overflow-scrolling: touch;
+			}
+			img{max-width: 100%;vertical-align: middle;}
+			.box {
+				position: relative;
+				top: 0;
+				left: 0;
+				text-align: center;
+				width: 100%;
+			}
+			.timer{
+				position: absolute;
+				width: 100%;
+				max-width: 750px;
+				top: 28.4%;
+				left: 50%;
+				transform: translateX(-50%);
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+			}
+			#time-box> span{
+				font-size: 55px;
+				color: #721313;
+			}
+			#day-wrap span{
+				font-size: 55px;
+				line-height: 55px;
+				color: #721313;
+				vertical-align: middle;
+			}
+			#day-wrap .day-text{font-size: 46px;font-weight: bold;}
+			.timer .dot{vertical-align: top;}
+			.timer .time{line-height: 1;}
+			.btn {
+				position: absolute;
+				width: 100%;
+				top: 44.8%;
+				left: 0;
+				text-align: center;
+			}
+			.btn>a{display: block;width: 100%;height: auto;text-align: center;}
+			.btn>img{margin: auto;}
+			#notBuyBtn{display: none;}
+			#day-wrap{display: none;}
+			#time-box{display: none;}
+		</style>
+	</head>
+	<body>
+		<div class="box" >
+			<img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180208/61fed442c063e11ec42ffae68325369b.png" id="bg"/>
+			<div class="timer" id="time-wrap">
+				<div id="time-box">
+					<span class="time" id="hour"></span>
+					<span class="dot">:</span>
+					<span class="time" id="minute"></span>
+					<span class="dot">:</span>
+					<span class="time" id="second"></span>
+				</div>
+				<div id="day-wrap">
+					<span class="day" id="day"></span><span class="day-text">일</span>
+				</div>
+			</div>
+			<div class="btn">
+				<a href="hellotalk://shop" >
+					<img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180208/d5f0e9f8f6af89902d8d8ffdb91e2fc4.png" id="buyBtn"  />
+				</a>
+				<img src="http://ali-hk-cdn.nihaotalk.com/class_share/20180208/64590faf526d1aa9748019c879e0164a.png" id="notBuyBtn"  />
+			</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="js/activity.js"></script>
+</html>
